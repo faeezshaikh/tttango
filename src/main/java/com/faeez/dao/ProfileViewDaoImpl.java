@@ -9,6 +9,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
 
+import com.faeez.model.MeetRequester;
 import com.faeez.model.ProfileView;
 
 @Repository
@@ -51,18 +52,28 @@ public class ProfileViewDaoImpl implements ProfileViewDao {
 	}*/
 
 	@Override
-	public List<ProfileView> getProfilesWhoViewedMe(Long profile_id) {
+	public List<MeetRequester> getProfilesWhoViewedMe(Long profile_id) {
 		Session session = this.sessionFactory.getCurrentSession();
-		@SuppressWarnings("unchecked")
-		List<ProfileView> viewsList = session.createQuery("from ProfileView where viewed_who = " + profile_id + " order by viewed_when desc").list();
-		logger.info("Successfully retrieved " + viewsList.size() + " views for :"+profile_id);
-		return viewsList;
+		org.hibernate.Query query = session.createQuery("select new com.faeez.model.MeetRequester(a.id,a.main_img,a.likes,a.views,a.meet_requests,a.username,a.online_status,a.birth,a.occupation,a.city,a.last_login, a.country,b.viewed_when) from Member a, ProfileView b where a.id = b.viewed_by and b.viewed_who = :viewedwho order by b.viewed_when desc");
+		query.setParameter("viewedwho", profile_id);
+		query.setMaxResults(100);
+		List<MeetRequester> meetList = query.list();
+		logger.info("Successfully retrieved " + meetList.size() + " views for :"+profile_id);
+		return meetList;
 	}
 
-
-
 	@Override
-	public List<ProfileView> getProfilesWhoIViewed(Long profile_id) {
+	public List<MeetRequester> getProfilesWhoIViewed(Long profile_id) {
+		Session session = this.sessionFactory.getCurrentSession();
+		org.hibernate.Query query = session.createQuery("select new com.faeez.model.MeetRequester(a.id,a.main_img,a.likes,a.views,a.meet_requests,a.username,a.online_status,a.birth,a.occupation,a.city,a.last_login, a.country,b.viewed_when) from Member a, ProfileView b where a.id = b.viewed_who and b.viewed_by = :viewedby order by b.viewed_when desc");
+		query.setParameter("viewedby", profile_id);
+		query.setMaxResults(100);
+		List<MeetRequester> meetList = query.list();
+		logger.info("Successfully retrieved " + meetList.size() + " views for :"+profile_id);
+		return meetList;
+	}
+	
+	public List<ProfileView> getProfilesWhoIViewed_old(Long profile_id) {
 		Session session = this.sessionFactory.getCurrentSession();
 		@SuppressWarnings("unchecked")
 		List<ProfileView> viewsList = session.createQuery("from ProfileView where viewed_by = " + profile_id).list();

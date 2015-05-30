@@ -35,7 +35,7 @@
 				<td data-title="'Country'" sortable="'country'"><a href="#PersonDetails" ng-click="personFromListSelected(meeter.profile_id)">{{meeter.country}} </a></td>
 				<td data-title="'Likes'" sortable="'likes'"><a href="#PersonDetails" ng-click="personFromListSelected(meeter.profile_id)">{{meeter.likes}} </a></td>
 
-				<td data-title="'You Requested When'" sortable="'meet_req_when'"><a href="#PersonDetails" ng-click="personFromListSelected(meeter.profile_id)"> {{ processDate(meeter.meet_req_when)}}</a></td>
+				<td data-title="'Liked When'" sortable="'meet_req_when'"><a href="#PersonDetails" ng-click="personFromListSelected(meeter.profile_id)"> {{ processDate(meeter.meet_req_when)}}</a></td>
 
 				<td data-title="'Last Online'" sortable="'last_login'"><a href="#PersonDetails" ng-click="personFromListSelected(meeter.profile_id)"> {{processOnlineStatus(meeter.online_status,meeter.last_login)}}</a></td>
 			</tr>

@@ -320,12 +320,12 @@ public class TangoController {
 	
 	
 	@RequestMapping(value = "/getWhoViewedMe/{profile_id}", method = RequestMethod.GET)
-	public List<ProfileViewer>  getWhoViewedMe(@PathVariable Long profile_id) {
+	public List<MeetRequester>  getWhoViewedMe(@PathVariable Long profile_id) {
 		return profileViewService.getProfilesWhoViewedMe(profile_id);
 	}
 
 	@RequestMapping(value = "/getWhoIViewed/{profile_id}", method = RequestMethod.GET)
-	public List<ProfileView> getWhoIViewed(@PathVariable Long profile_id) {
+	public List<MeetRequester> getWhoIViewed(@PathVariable Long profile_id) {
 		return profileViewService.getProfilesWhoIViewed(profile_id);
 	}
 

@@ -14,8 +14,8 @@
 		}
 
 		$scope.pretty = function(val) {
-			  return prettyTime(val);
-		  }
+			return prettyTime(val);
+		}
 		$scope.init = function() {
 
 			var url = REST_BASE + 'getWhoViewedMe/' + $scope.auth.profile.identities[0].user_id;
@@ -48,6 +48,27 @@
 
 		$scope.personFromListSelected = function(viewer_profile_id) {
 			localStorage.setItem("personId", viewer_profile_id);
+		}
+		
+		$scope.getImgUrl = function(main_image) {
+			return getMainImgUrl(main_image);
+		}
+
+		$scope.processDate = function(val) {
+			return handleDate(val);
+		}
+
+		$scope.processOnlineStatus = function(onlineStatus, lastLogin) {
+			var d = new Date(lastLogin);
+			return getOnlineStatus(onlineStatus, d.toLocaleString());
+		}
+
+		$scope.getSize = function() {
+			if ($scope.responseSize >= 100) {
+				return 'More than 100';
+			} else {
+				return $scope.responseSize;
+			}
 		}
 	});
 

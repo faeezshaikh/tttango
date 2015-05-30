@@ -2,11 +2,10 @@ package com.faeez.service;
 
 import java.util.List;
 
-import com.faeez.model.ProfileView;
-import com.faeez.ui.model.ProfileViewer;
+import com.faeez.model.MeetRequester;
 
 public interface ProfileViewService {
 
-	public List<ProfileViewer>  getProfilesWhoViewedMe(Long profile_id);
-	public List<ProfileView> getProfilesWhoIViewed(Long profile_id);
+	public List<MeetRequester>  getProfilesWhoViewedMe(Long profile_id);
+	public List<MeetRequester> getProfilesWhoIViewed(Long profile_id);
 }

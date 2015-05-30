@@ -107,7 +107,6 @@
 
 	<beans:bean id="profileViewService" class="com.faeez.service.ProfileViewServiceImpl">
 		<beans:property name="profileViewDao" ref="profileViewDao"></beans:property>
-		<beans:property name="memberDao" ref="memberDao"></beans:property>
 	</beans:bean>
 
 	<beans:bean id="likeMeDao" class="com.faeez.dao.LikeMeDaoImpl">
