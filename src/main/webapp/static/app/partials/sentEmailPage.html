@@ -1,0 +1,63 @@
+<div class="row">
+	<!--Side ad panel begin-->
+	<div class="col-lg-2">
+		<img id="image-4"
+			src="http://placekitten.com.s3.amazonaws.com/homepage-samples/200/286.jpg"
+			alt="">
+		<p></p>
+		<p></p>
+		<img id="image-4"
+			src="http://placekitten.com.s3.amazonaws.com/homepage-samples/200/286.jpg"
+			alt="">
+	</div>
+	<!--Side ad panel end-->
+
+	<div ng-controller="SentEmailController" ng-init="init()"
+		class="col-lg-8">
+		<div class="row">
+
+
+			<div class="col-lg-2">
+				<a href="#PersonDetails"
+					ng-click="picInsideSentEmailClicked(sentEmail.receivers_profile_id)">
+					<img style="width: 150px; height: 150px;" id="image-4"
+					ng-src={{sentEmail.receivers_pic_url}} 
+					err-SRC="http://centralnormal.spdev.co.nz/images/custom/Staff/NoPerson.png"alt="">
+				</a>
+			</div>
+
+
+			<div class="col-md-9">
+				<div class="panel panel-default">
+					<div class="panel-body">
+						<div>
+							<small>{{sentEmail.email_time_millis}}</small>
+
+							<blockquote>
+								<p>{{sentEmail.message}}</p>
+							</blockquote>
+						</div>
+
+
+					</div>
+				</div>
+
+			</div>
+		</div>
+
+	</div>
+
+
+	<!--Side ad panel begin-->
+	<div class="col-lg-2">
+		<img id="image-4"
+			src="http://placekitten.com.s3.amazonaws.com/homepage-samples/200/286.jpg"
+			alt="">
+		<p></p>
+		<p></p>
+		<img id="image-4"
+			src="http://placekitten.com.s3.amazonaws.com/homepage-samples/200/286.jpg"
+			alt="">
+	</div>
+	<!--Side ad panel end-->
+</div>

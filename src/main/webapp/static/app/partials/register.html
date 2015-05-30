@@ -1,0 +1,433 @@
+<div class="col-lg-12" ng-controller="RegisterController" ng-init="init()">
+	<form role="form">
+		<div class="panel panel-default">
+			<div class="panel-heading text-center">
+				<strong>Update Your Profile</strong>
+			</div>
+
+			<div class="panel-body">
+				<div class="row">
+					<div class="col-lg-6">
+						<div class="form-group input-group">
+							<label>Username:</label> <input type="text" class="form-control" placeholder="member.username" ng-model="member.username" disabled>
+						</div>
+
+						<div class="form-group">
+							<label>First Name:</label> <input type="text" class="form-control" ng-model="member.firstname" placeholder="First Name">
+						</div>
+
+						<div class="form-group">
+							<label>Last Name:</label> <input type="text" class="form-control" ng-model="member.surname" placeholder="Last Name">
+						</div>
+
+						<div class="form-group">
+
+							<div class="row">
+								<div class="form-group col-sm-3">
+									<label>Birth Day</label> <select class="form-control"  ng-model="member.day" ng-options="v for v in birthday_prop.values">
+									</select>
+								</div>
+								
+								<div class="form-group col-sm-6">
+									<label>Birth Month</label> <select class="form-control"  ng-model="member.month_name" ng-options="v for v in birthmonth_prop.values">
+									</select>
+								</div>
+								
+								<div class="form-group col-sm-3">
+									<label>Birth Year</label> <select class="form-control"  ng-model="member.year" ng-options="v for v in birthyear_prop.values">
+									</select>
+								</div>
+							</div>
+						</div>
+						
+
+						<div class="form-group">
+							<label>Gender:</label> 
+							<label class="checkbox-inline"> 
+								<input type="radio" ng-model="member.sex" value="Male">Male
+							</label> 
+							<label class="checkbox-inline">
+								 <input type="radio" ng-model="member.sex" value="Female">Female
+							</label>
+						</div>
+						
+
+					</div>
+
+					<div class="col-lg-6">
+
+						<div class="form-group">
+							<label>Email:</label> <input type="text" class="form-control" ng-model="member.email" placeholder="email@address.com">
+						</div>
+
+						<div class="form-group">
+							<!-- <label>Current city:</label> <input type="text" class="form-control" ng-model="member.city" placeholder="City name"> -->
+							<label>Current city: (start typing..)</label> <input type="text" class="form-control" name="ff_nm_from[]" value="" id="f_elem_city" ng-model="member.city"
+								placeholder="Just start typing the name.." />
+						</div>
+
+
+						<div class="form-group">
+							<label>Region / State:</label> <input type="text" class="form-control" name="ff_nm_from[]" value="" id="f_elem_region" ng-model="member.state" placeholder="Region name"  />
+						</div>
+
+
+						<div class="form-group">
+							<label>Country:</label> <input type="text" class="form-control" name="ff_nm_from[]" value="" id="f_elem_country" ng-model="member.country" placeholder="Country"  />
+						</div>
+
+						<div class="form-group">
+							<div class="row">
+									
+									<div class="form-group col-lg-12">
+										<label>Nationality:</label><select class="form-control" ng-model="member.nationality" ng-options="v for v in nationality_prop.values">
+										</select>
+									</div>
+							</div>
+						</div>
+						
+						
+					</div>
+
+				</div>
+			</div>
+
+		</div>
+
+
+
+		<div class="panel panel-default">
+			<div class="panel-heading text-center">
+				<strong>Describe yourself and your match</strong>
+			</div>
+
+			<div class="panel-body">
+				<div class="row">
+					<div class="col-lg-6">
+
+						<div class="form-group">
+							<div class="row">
+								<div class="form-group col-sm-6">
+									<label>Your Height</label> <select class="form-control" ng-model="member.height" ng-options="v for v in height_prop.values">
+									</select>
+								</div>
+							</div>
+						</div>
+
+						<div class="form-group">
+							<div class="row">
+								<div class="form-group col-lg-6">
+									<label>Your Body Type</label> <select class="form-control" ng-model="member.bodytype" ng-options="v for v in bodytype_prop.values">
+									</select>
+								</div>
+							</div>
+						</div>
+
+						<div class="form-group">
+							<div class="row">
+								<div class="form-group col-lg-6">
+									<label>Your Hair Color</label> <select class="form-control" ng-model="member.haircolor" ng-options="v for v in haircolor_prop.values">
+									</select>
+								</div>
+							</div>
+						</div>
+
+
+						<div class="form-group">
+							<div class="row">
+								<div class="form-group col-sm-6">
+									<label>Your Eye Color</label> <select class="form-control" ng-model="member.eyecolor" ng-options="v for v in eyecolor_prop.values">
+									</select>
+								</div>
+							</div>
+						</div>
+
+						<div class="form-group">
+							<div class="row">
+								<div class="form-group col-sm-6">
+									<label>Your Education</label> <select class="form-control" ng-model="member.education" ng-options="v for v in education_prop.values">
+									</select>
+								</div>
+							</div>
+						</div>
+						
+						<div class="form-group">
+							<div class="row">
+								<div class="form-group col-sm-6">
+									<label>Have your own home?</label> <select class="form-control" ng-model="member.home" ng-options="v for v in home_prop.values">
+									</select>
+								</div>
+							</div>
+						</div>
+						
+
+
+						<div class="form-group">
+							<div class="row">
+								<div class="form-group col-sm-6">
+									<label>Relgion</label> <select class="form-control" ng-model="member.religion" ng-options="v for v in religion_prop.values">
+									</select>
+								</div>
+							</div>
+						</div>
+
+					</div>
+
+					<div class="col-lg-6">
+						<div class="form-group">
+							<div class="row">
+								<div class="form-group col-sm-6">
+									<label>Your Marital Status</label> <select class="form-control" ng-model="member.marital_status" ng-options="v for v in marital_prop.values">
+									</select>
+								</div>
+							</div>
+						</div>
+
+						<div class="form-group">
+							<div class="row">
+								<div class="form-group col-sm-6">
+									<label>Do you have children?</label> <select class="form-control" ng-model="member.children" ng-options="v for v in children_prop.values">
+									</select>
+								</div>
+							</div>
+						</div>
+
+						<div class="form-group">
+							<div class="row">
+								<div class="form-group col-sm-6">
+									<label>Your occupation</label><select class="form-control" ng-model="member.occupation" ng-options="v for v in occupation_prop.values">
+								</div>
+							</div>
+						</div>
+
+						<div class="form-group">
+							<div class="row">
+								<div class="form-group col-sm-6">
+									<label>Your ethnicity</label> <select class="form-control" ng-model="member.ethnicity" ng-options="v for v in ethnicity_prop.values">
+									</select>
+								</div>
+							</div>
+						</div>
+
+						<div class="form-group">
+							<div class="row">
+								<div class="form-group col-sm-6">
+									<label>Your Annual Income</label> <select class="form-control" ng-model="member.income" ng-options="v for v in income_prop.values">
+									</select>
+								</div>
+							</div>
+						</div>
+
+						<div class="form-group">
+							<div class="row">
+								<div class="form-group col-sm-6">
+									<label>Smoke?</label> <select class="form-control" ng-model="member.smoke" ng-options="v for v in smoke_prop.values">
+									</select>
+								</div>
+							</div>
+						</div>
+
+						<div class="form-group">
+							<div class="row">
+								<div class="form-group col-sm-6">
+									<label>Do you Read Quran?</label> <select class="form-control" ng-model="member.quran" ng-options="v for v in quran_prop.values">
+									</select>
+								</div>
+							</div>
+						</div>
+						
+						<div class="form-group">
+							<div class="row">
+								<div class="form-group col-sm-6">
+									<label>Willing to Relocate?</label> <select class="form-control" ng-model="member.relocate" ng-options="v for v in relocate_prop.values">
+									</select>
+								</div>
+							</div>
+						</div>
+
+
+						<div class="form-group">
+							<div class="row">
+								<div class="form-group col-sm-6">
+									<label>Languages spoken: </label>
+									 <select class="form-control" multiple ng-model="member.languages" ng-options="v for v in language_prop.values">
+								      <!--   <option value="1">Blue</option>
+								        <option value="2">Green</option>
+								        <option value="3">Yellow</option>
+								        <option value="4">Red</option> -->
+								    </select>
+								     <small>(Ctrl+click to select multiple)</small>
+								</div>
+							</div>
+						</div>
+						Your languages : {{member.languages}}
+					
+					</div>
+				</div>
+
+				<!--  <div class="col-lg-6" >
+					
+						<div class="form-group">
+								<label>Your Match's Height should be at least:</label>
+								<div class="row">
+									<div class="form-group col-sm-3">
+										<label>Feet</label> <select class="form-control" ng-model="member.matchFeet">
+											<option>1</option>
+											<option>2</option>
+											<option>3</option>
+											<option>4</option>
+											<option>5</option>
+										</select>
+									</div>
+									<div class="form-group col-sm-3">
+										<label>Inches</label> <select class="form-control" ng-model="member.matchInches">
+											<option>1</option>
+											<option>2</option>
+											<option>3</option>
+											<option>4</option>
+											<option>5</option>
+										</select>
+									</div>
+								</div>
+						</div>
+						
+						<div class="form-group">
+								<div class="row">
+									<div class="form-group col-sm-6">
+										<label>Your match's Body Type should be:</label> <select class="form-control" ng-model="member.matchBodyType">
+											<option>1</option>
+											<option>2</option>
+											<option>3</option>
+											<option>4</option>
+											<option>5</option>
+										</select>
+									</div>
+								</div>
+						</div>
+						
+						<div class="form-group">
+								<div class="row">
+									<div class="form-group col-sm-6">
+										<label>Your match's Hair Color should be:</label> <select class="form-control" ng-model="member.matchHair">
+											<option>1</option>
+											<option>2</option>
+											<option>3</option>
+											<option>4</option>
+											<option>5</option>
+										</select>
+									</div>
+								</div>
+						</div>
+						
+						<div class="form-group">
+								<div class="row">
+									<div class="form-group col-sm-6">
+										<label>Your match's Eye Color should be:</label> <select class="form-control" ng-model="member.matchEye">
+											<option>1</option>
+											<option>2</option>
+											<option>3</option>
+											<option>4</option>
+											<option>5</option>
+										</select>
+									</div>
+								</div>
+						</div>
+						
+						<div class="form-group">
+								<div class="row">
+									<div class="form-group col-sm-6">
+										<label>Your Match's Marital Status can be:</label> <select class="form-control" ng-model="member.matchMarital">
+											<option>1</option>
+											<option>2</option>
+											<option>3</option>
+											<option>4</option>
+											<option>5</option>
+										</select>
+									</div>
+								</div>
+						</div>
+						
+						<div class="form-group">
+								<div class="row">
+									<div class="form-group col-sm-6">
+										<label>Should your match have kids?</label> <select class="form-control" ng-model="member.matchChildren">
+											  <option value="audi" selected>Audi</option>
+											<option>Yes</option>
+											<option>No</option>
+										</select>
+									</div>
+								</div>
+						</div>
+						
+						<div class="form-group">
+								<div class="row">
+									<div class="form-group col-sm-6">
+										<label>Match's occupation should be:</label> <select class="form-control" ng-model="member.matchOccupation">
+											<option value="0" selected>Doesnt matter</option>
+											<option>2</option>
+											<option>3</option>
+											<option>4</option>
+											<option>5</option>
+										</select>
+									</div>
+								</div>
+						</div>
+						
+						<div class="form-group">
+								<div class="row">
+									<div class="form-group col-sm-6">
+										<label>Match's ethnicity must be:</label> <select class="form-control" ng-model="member.matchEthnicity">
+											<option value="0" selected>Doesnt matter</option>
+											<option>2</option>
+											<option>3</option>
+											<option>4</option>
+											<option>5</option>
+										</select>
+									</div>
+								</div>
+						</div>
+					</div> -->
+
+			</div>
+
+		</div>
+
+
+		<div class="panel panel-default">
+			<div class="panel-heading text-center">
+				<strong>Tell us more about yourself</strong>
+			</div>
+
+			<div class="panel-body">
+				<div class="form-group">
+					<textarea class="form-control" rows="5" placeholder="Your hobbies, what you like, dislike anything goes.." ng-model="member.description"></textarea>
+				</div>
+			</div>
+		</div>
+
+		<div class="panel panel-default">
+			<div class="panel-heading text-center">
+				<strong>Tell us more about what kind of match you are looking for</strong>
+			</div>
+
+			<div class="panel-body">
+				<div class="form-group">
+
+					<textarea class="form-control" rows="5" placeholder="Their desired qualities.." ng-model="member.mymatch"></textarea>
+				</div>
+			</div>
+		</div>
+
+
+		<div class="row text=center">
+			<div class="col-lg-2"></div>
+			<button class="btn btn-success col-lg-3" ng-click="saveClicked()">Save</button>
+			<div class="col-lg-2"></div>
+			<button class="btn btn-danger col-lg-3" ng-click="cancelClicked()">Cancel</button>
+			<div class="col-lg-2	"></div>
+		</div>
+	</form>
+</div>
+<!-- /.panel -->
+
+

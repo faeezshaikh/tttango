@@ -1,0 +1,373 @@
+/* Styles go here */
+body {
+	/*  background: #eee;*/
+	padding-top: 50px;
+	font-size: 140%;
+}
+
+.jumbotron {
+	/*background: #61CDF5;*/
+	
+}
+
+.panel-heading {
+	/* color: red; */
+	background-color: #f5f5f5;
+	border-color: blue;
+}
+
+/*Navbar custom begin*/
+/*Navbar custom color generator
+http://work.smarchal.com/twbscolor/*/
+.navbar-default {
+	background-color: #59b660;
+	border-color: #63e867;
+	/* Gradient */
+	background: #b5bdc8; /* Old browsers */
+	background: -moz-linear-gradient(top, #b5bdc8 0%, #828c95 36%, #28343b 100%);
+	/* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #b5bdc8),
+		color-stop(36%, #828c95), color-stop(100%, #28343b));
+	/* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top, #b5bdc8 0%, #828c95 36%, #28343b 100%);
+	/* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top, #b5bdc8 0%, #828c95 36%, #28343b 100%);
+	/* Opera 11.10+ */
+	background: -ms-linear-gradient(top, #b5bdc8 0%, #828c95 36%, #28343b 100%);
+	/* IE10+ */
+	background: linear-gradient(to bottom, #b5bdc8 0%, #828c95 36%, #28343b 100%);
+	/* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#b5bdc8',
+		endColorstr='#28343b', GradientType=0); /* IE6-9 */
+
+	/* Gradient ends*/
+}
+
+.navbar-default .navbar-brand {
+	color: #cfe8ee;
+}
+
+.navbar-default .navbar-brand: hover, .navbar-default .navbar-brand: focus
+	{
+	color: #ffffff;
+}
+
+.navbar-default .navbar-text {
+	color: #cfe8ee;
+}
+
+.navbar-default .navbar-nav>li>a {
+	color: #cfe8ee;
+}
+
+.navbar-default .navbar-nav>li>a: hover, .navbar-default .navbar-nav>li>a: focus
+	{
+	color: #ffffff;
+}
+
+.navbar-default .navbar-nav>.active>a, .navbar-default .navbar-nav>.active>a: hover,
+	.navbar-default .navbar-nav>.active>a: focus {
+	color: #ffffff;
+	background-color: #63e867;
+}
+
+.navbar-default .navbar-nav>.open>a, .navbar-default .navbar-nav>.open>a: hover,
+	.navbar-default .navbar-nav>.open>a: focus {
+	color: #ffffff;
+	background-color: #63e867;
+}
+
+.navbar-default .navbar-toggle {
+	border-color: #63e867;
+}
+
+.navbar-default .navbar-toggle: hover, .navbar-default .navbar-toggle: focus
+	{
+	background-color: #63e867;
+}
+
+.navbar-default .navbar-toggle .icon-bar {
+	background-color: #cfe8ee;
+}
+
+.navbar-default .navbar-collapse, .navbar-default .navbar-form {
+	border-color: #cfe8ee;
+}
+
+.navbar-default .navbar-link {
+	color: #cfe8ee;
+}
+
+.navbar-default .navbar-link: hover {
+	color: #ffffff;
+}
+
+@media ( max-width : 767px) {
+	.navbar-default .navbar-nav .open .dropdown-menu>li>a {
+		color: #cfe8ee;
+	}
+	.navbar-default .navbar-nav .open .dropdown-menu>li>a: hover,
+		.navbar-default .navbar-nav .open .dropdown-menu>li>a: focus {
+		color: #ffffff;
+	}
+	.navbar-default .navbar-nav .open .dropdown-menu>.active>a,
+		.navbar-default .navbar-nav .open .dropdown-menu>.active>a: hover,
+		.navbar-default .navbar-nav .open .dropdown-menu>.active>a: focus {
+		color: #ffffff;
+		background-color: #63e867;
+	}
+}
+
+/*Navbar custom end*/
+
+/* Center of div begin */
+.center {
+	margin-left: auto;
+	margin-right: auto;
+	width: 70%;
+	/*background-color: #b0e0e6;*/
+}
+/* Center of div end */
+
+/* Typeahead CSS*/
+.tt-query {
+	-webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+	-moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+	box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+}
+
+.tt-hint {
+	color: #999
+}
+
+.tt-dropdown-menu {
+	width: 422px;
+	margin-top: 4px;
+	padding: 4px 0;
+	background-color: #fff;
+	border: 1px solid #ccc;
+	border: 1px solid rgba(0, 0, 0, 0.2);
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	border-radius: 4px;
+	-webkit-box-shadow: 0 5px 10px rgba(0, 0, 0, .2);
+	-moz-box-shadow: 0 5px 10px rgba(0, 0, 0, .2);
+	box-shadow: 0 5px 10px rgba(0, 0, 0, .2);
+}
+
+.tt-suggestion {
+	padding: 3px 20px;
+	line-height: 24px;
+}
+
+.tt-suggestion.tt-cursor {
+	color: #fff;
+	background-color: #0097cf;
+}
+
+.tt-suggestion p {
+	margin: 0;
+}
+
+/* Typeahead ends */
+
+/* Badge */
+.badge {
+	display: inline-block;
+	min-width: 10px;
+	padding: 3px 7px;
+	font-size: 12px;
+	font-weight: 700;
+	line-height: 0.5;
+	color: brown;
+	text-align: center;
+	white-space: nowrap;
+	vertical-align: baseline;
+	background-color: white;
+	border-radius: 10px;
+}
+
+/* Badge ends */
+
+/* fit image to div*/
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+.portrait {
+	height: 80px;
+	width: 30px;
+}
+
+.landscape {
+	height: 30px;
+	width: 80px;
+}
+
+.square {
+	height: 85px;
+	width: 85px;
+}
+
+/* Messing with panel default's color */
+.panel-default>.panel-heading {
+	/* color: #333; */
+	color: #432BB2;
+	background-color: red;
+	border-color: #ddd;
+	background-color: rgb(206, 220, 231); /* Old browsers */
+	background-color: -moz-linear-gradient(top, rgba(206, 220, 231, 1) 0%,
+		rgba(89, 106, 114, 1) 100%); /* FF3.6+ */
+	background-color: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(206,
+		220, 231, 1)), color-stop(100%, rgba(89, 106, 114, 1)));
+	/* Chrome,Safari4+ */
+	background-color: -webkit-linear-gradient(top, rgba(206, 220, 231, 1) 0%,
+		rgba(89, 106, 114, 1) 100%); /* Chrome10+,Safari5.1+ */
+	background-color: -o-linear-gradient(top, rgba(206, 220, 231, 1) 0%,
+		rgba(89, 106, 114, 1) 100%); /* Opera 11.10+ */
+	background-color: -ms-linear-gradient(top, rgba(206, 220, 231, 1) 0%,
+		rgba(89, 106, 114, 1) 100%); /* IE10+ */
+	background-color: linear-gradient(to bottom, rgba(206, 220, 231, 1) 0%,
+		rgba(89, 106, 114, 1) 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#cedce7',
+		endColorstr='#596a72', GradientType=0); /* IE6-9 */
+}
+
+.unread {
+	background-color: #CCE680;
+	color: white;
+}
+
+/* For the image tooltip..only one from here*/
+.animate-show {
+	-webkit-transition: all linear 0.5s;
+	transition: all linear 0.5s;
+	opacity: 1;
+}
+
+.animate-show.ng-hide-add, .animate-show.ng-hide-remove {
+	display: inline-block !important;
+}
+
+.animate-show.ng-hide {
+	opacity: 0;
+}
+
+/* Till here */
+
+/* the angular-file-upload */
+.button {
+	-moz-appearance: button;
+	/* Firefox */
+	-webkit-appearance: button;
+	/* Safari and Chrome */
+	padding: 10px;
+	margin: 10px;
+	width: 70px;
+}
+
+.drop-box {
+	background: #F8F8F8;
+	border: 5px dashed #DDD;
+	width: 200px;
+	height: 65px;
+	text-align: center;
+	padding-top: 25px;
+	margin: 10px;
+}
+
+.dragover {
+	border: 5px dashed blue;
+}
+/* end */
+
+
+/* jQuery autocomplete for city from here */
+.ui-menu .ui-menu-item a,.ui-menu .ui-menu-item a.ui-state-hover, .ui-menu .ui-menu-item a.ui-state-active {
+	font-weight: normal;
+	margin: -1px;
+	text-align:left;
+	font-size:14px;
+	}
+.ui-autocomplete-loading {
+	background: white url("/images/ui-anim_basic_16x16.gif") right center no-repeat; 
+	}
+	
+/* jQuery autocomplete for city till here */
+
+
+
+/* for image enlarge on hover from here */
+.thumbnail:hover {
+    position:relative;
+    top:-25px;
+    left:-35px;
+    width:500px;
+    height:auto;
+    display:block;
+    z-index:999;
+}
+/* till here */
+
+.myBlackColor {
+	color : #333
+}
+
+
+
+/* Zoom on hover start */
+
+*{
+    margin:0;
+    padding:0;
+}
+
+.wrapper {
+    margin: 0px auto;
+    /* background: #130802; */
+    width: 1024px;
+    position: relative;
+   /*  color: #F2D5B7; */
+    z-index: 0;
+}
+
+.photos {
+    position:relative;
+}
+.photos > div {
+    /* background-color: rgba(128, 128, 128, 0.5); */
+    /* border: 2px solid #444; */
+   /*  height: 100px;
+    margin: 5px; */
+    position: relative;
+    display:inline-block;
+    width: 300px;
+    z-index: 1;
+    -webkit-transform:scale(1.0);
+    -moz-transform:scale(1.0);
+    -ms-transform:scale(1.0);
+    -o-transform:scale(1.0);
+    transform:scale(1.0);
+
+    -webkit-transition-duration: 0.5s;
+    -moz-transition-duration: 0.5s;
+    -ms-transition-duration: 0.5s;
+    -o-transition-duration: 0.5s;
+    transition-duration: 0.5s;
+}
+.photos > div img{
+    width: 100%;
+}
+.photos > div:hover{
+    z-index: 10;
+
+    -webkit-transform:scale(2.0);
+    -moz-transform:scale(2.0);
+    -ms-transform:scale(2.0);
+    -o-transform:scale(2.0);
+    transform:scale(2.0);
+}
+
+
+/* Zomm on hover end */

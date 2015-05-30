@@ -1,0 +1,56 @@
+(function() {
+spaApp.controller('LikedMeController', function($scope, $http, $location,$route,userService,auth,ngTableParams,$filter) {
+
+  $scope.auth = auth;
+  $scope.isLoading = true;
+  $scope.responseSize = 1;
+  $scope.serviceErrored = false;
+  
+	$scope.areResultsPresent = function() {
+		if($scope.responseSize>0) {
+			return true;
+		}
+		return false;
+	}
+  
+  
+  $scope.init = function() {
+		  
+		var url = REST_BASE + 'getWhoLikedMe/' + $scope.auth.profile.identities[0].user_id;
+		$http.get(url).
+			success(function(data) {
+				 var resp = data;
+				 $scope.isLoading = false;
+				 $scope.responseSize = data.length;
+			  
+				$scope.tableParams = new ngTableParams({
+					  page: 1, // show first page
+					  count: 10, // count per page
+					  sorting: {
+						  like_time: 'desc' // initial sorting
+					  }
+					}, {
+					  total: resp.length, // length of data
+					  getData: function($defer, params) {
+						// use build-in angular filter
+						var orderedData = params.sorting() ?
+						  $filter('orderBy')(resp, params.orderBy()) :
+						  resp;
+
+						$defer.resolve(orderedData.slice((params.page() - 1) * params.count(), params.page() * params.count()));
+					  }
+					});
+				
+				
+			}).error(function(data) {
+				$scope.isLoading = false;
+				$scope.serviceErrored = true;
+			});
+	  }
+  
+  $scope.personFromListSelected = function(profile_id) {
+		localStorage.setItem("personId",  profile_id);
+	}
+});
+
+})();

@@ -1,0 +1,43 @@
+
+
+
+<!--  *  Future updates. Allow multiple files upload at same time. Small issue on server side. After updating the no_of_pics in database, the subsequent read of the count is not picking
+		 *  the latet count. The write is taking time, because of which the subsequent read is not correct. 
+		 *  Other approach would be to have filename prefixed by profile id, but then the logic for displaying random pics wld have to change. Right now its easy. "ProfileId_1.jpg". You 
+		 *  would have to get file names from bucket which cld be anything eg "profileId-xyh.jpg" or "profileId-abc.jpg" and then modify display logic accordingly.
+		 
+ -->
+
+<div ng-app="fileUpload" ng-controller="UploadPicController">
+	<div class="btn btn-success" ngf-select ng-model="files" ng-disabled="isUploadInProgress()" ngf-multiple="false" ng-show="isUploadAllowed()">Select Files</div>
+	<!-- 	Drop File:
+									<div ngf-drop ngf-select ng-model="files" class="drop-box" ngf-drag-over-class="dragover" ngf-multiple="true" ngf-allow-dir="true" accept="image/*">Drop images
+										here or click to upload</div>
+									<div ngf-no-file-drop>File Drag/Drop is not supported for this browser</div> -->
+
+	<pre>
+	<strong>You can Upload a total of 12 pictures!</strong> 
+	{{log}}</pre>
+	<!-- <li ng-repeat="f in files" style="font: smaller">{{f.name}}</li>  -->
+
+	<img ng-show="inprogress" ngf-src="files[0]" style="width: 200px; height: 180px;">
+
+
+	<div class="panel panel-default">
+		<div class="panel-body col-md-12">
+			<div ng-repeat="uploaded_img in uploaded_imgs | orderBy:uploaded_img" class="panel panel-default col-md-4">
+				<div class="panel-heading">
+					<button class="btn btn-success" ng-disabled="isUploadInProgress()"  ng-click="makeMainImage(uploaded_img)">Make this main</button>
+					<button class="btn btn-danger" ng-disabled="isUploadInProgress()" ng-click="deleteImage(uploaded_img)">Delete</button>
+					
+				</div>
+				<div class="panel-body">
+					<img ng-src={{uploaded_img}} style="width: 200px; height: 180px;">
+					
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+</div>

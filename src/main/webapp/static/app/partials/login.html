@@ -1,0 +1,181 @@
+<div class="row text-center">
+	<div class="col-md-3 ">
+		<p></p>
+		<p></p>
+		<i>"And among His Signs is this, that He created for you mates from among yourselves, that ye may dwell in tranquillity with them, and He has put love and mercy between your (hearts): verily in
+			that are Signs for those who reflect."</i>
+		<p></p>
+		Find the person who will love you for the sake of Allah!
+		<p></p>
+		<p></p>
+		<p></p>
+		<h2>World's First 100% Free Site for Single Muslims.</h2>
+		<p></p>
+		
+	</div>
+
+	<div class="col-md-4"  ng-controller="RegisterController">
+
+		<div class="panel panel-default myBlackColor">
+			<div class="panel-body">
+				<label>100% Free Access!</label>
+				
+				<form role="form" name="registerForm" ng-submit="register(registerForm.$valid)" novalidate >
+					
+					<div class="form-group" ng-class="{ 'has-error' : registerForm.registerUsername.$invalid  && submitted}">
+						<label for="registerUsername">Username</label> 
+						<input id="registerUsername" type="text" class="form-control" name="registerUsername" placeholder="Enter username" ng-model="registerUsername" ng-minlength="3" ng-maxlength="8" required>
+						 <p ng-show="registerForm.registerUsername.$invalid && !registerForm.registerUsername.$pristine" class="help-block">Username must be between 3 & 8 characters</p>
+					</div>
+					
+					<div class="form-group" ng-class="{ 'has-error' : registerForm.registerEmail.$invalid  && submitted}">
+						<label for="registerEmail">Email</label>
+						 <input type="email" id="registerEmail" name="registerEmail" class="form-control"  placeholder="Enter username" ng-model="registerEmail" required>
+						 <p ng-show="registerForm.registerEmail.$invalid && !registerForm.registerEmail.$pristine" class="help-block">Email must be valid and active.</p>
+					</div>
+					
+					<div class="form-group" ng-class="{ 'has-error' : registerForm.registerPassword.$invalid && submitted}">
+						<label for="registerPassword">Password</label>
+						<input type="password" class="form-control" id="registerPassword" name="registerPassword" placeholder="Password" ng-model="registerPassword" ng-minlength="5" required>
+						<p ng-show="registerForm.registerPassword.$invalid && !registerForm.registerPassword.$pristine" class="help-block">Password must be at least 5 characters.</p>
+					</div>
+					
+					<div class="form-group" ng-class="{ 'has-error' :  registerForm.optradio.$invalid  && submitted}">
+
+						<label>Your Gender</label>
+						<label class="radio-inline"> 
+							<input type="radio" name="optradio" value="1" ng-model="gender" required>Male
+						</label>
+						<label class="radio-inline"> 
+								<input type="radio" name="optradio" value="2" ng-model="gender" required>Female
+						</label> 
+						<p ng-show="gender == undefined && submitted" class="help-block">Select gender</p>
+					</div>
+
+					<div class="form-group" ng-class="{ 'has-error' : !checkboxValue && submitted}">
+						<div class="checkbox">
+							<label><input type="checkbox" name="registerCheck" ng-model="checkboxValue" required><small>I certify that I am 18 or over, that I have read and accepted the <a href="#"> Terms and Conditions</a> as well as the Privacy Policy of Muslim Partners.com 
+							</small></label>
+						</div>
+					</div>
+
+					<button type="submit" class="btn btn-success btn-lg" >Free Sign up</button>
+					<p></p>
+					<span ng-hide="submitted" class="text-danger">{{registrationResponseFail}}</span>
+					<span ng-hide="submitted" class="text-success">{{registrationResponsePass}}</span>
+					<span ng-show="submitted && isFormValid" class="text-warning">Please wait..</span>
+				</form>
+			</div>
+		</div>
+
+
+
+	</div>
+	<div align="left" class="col-md-2">
+		<p></p>
+		<p></p>
+		10,000+ Members
+		<p></p>
+		2134 Online
+		<p></p>
+		298,765 messages exchanged
+		<p></p>
+		All features are Free- See
+		<p></p>
+		<ul>
+			<li>Who viewed you</li>
+			<li>Who liked you</li>
+			<li>Who wants to meet you</li>
+			<li>Who read your message</li>
+		</ul>
+
+		<p></p>
+
+
+		And much more!
+		<p></p>
+		<h4>No Premium or A-list upgrades. Everyone is a premium member :-)</h4>
+		
+
+	</div>
+	<div class="col-md-3">
+
+		<div class="panel panel-default myBlackColor">
+			<div class="panel-body">
+				<label>Login in here.</label>
+				<form role="form" name="loginForm"  novalidate>
+					<div class="form-group" >
+						<input type="text" id="loginField" name="loginField" class="form-control" placeholder="Enter username" ng-model="loginUsername" required>
+					</div>
+					<div class="form-group" >
+						<label>Password</label> <input type="password" id="passwordField" name="passwordField" class="form-control" placeholder="Password" ng-model="loginPassword" required>
+					</div>
+					<button type="submit" class="btn btn-success" ng-disabled="loginForm.$invalid" ng-click="login()">Login</button>
+					<button type="submit" class="btn btn-default" ng-click="requestForgot()">Forgot login</button>
+					
+					<p></p>
+					<span class="text-danger">{{ loginMessage }}</span>
+				</form>
+			</div>
+		</div>
+
+<!--  -->
+
+		<div id="forgotPanel" ng-show="forgotClicked() " class="panel panel-default">
+			<div class="panel-body">
+				<label>Enter Email Address</label>
+				<form role="form" name="forgotForm"  novalidate>
+					<div class="form-group" >
+						<input id="forgotEmail" type="email" name="forgotEmail" class="form-control" placeholder="Enter email" ng-model="forgotEmail" required>
+					</div>
+					<button type="submit" class="btn btn-default" ng-disabled="forgotForm.$invalid" ng-click="forgotLoginSubmitted()">Submit</button>
+					<p></p>
+					<span class="text-success">{{ forgotMessagePass }}</span>
+					<span class="text-danger">{{ forgotMessageFail }}</span>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+<!--Meet someone new Panel Begin-->
+<div ng-controller="LoginController" ng-init="init()" class="col-lg-12">
+	<div class="panel panel-default">
+		<div class="panel-heading text-center ">
+			<strong class="myBlackColor"> Meet someone new today</strong>
+		</div>
+		<!-- /.panel-heading -->
+		<div class="panel-body text-center">
+			<!-- Nav tabs -->
+
+			<div class="col-md-12 text-center ">
+
+
+				<div ng-repeat="random_pic in random_profile_ids track by $index" class="panel  col-md-3">
+					<a href="#PersonDetailsUnregistered" ng-click="randomPersonSelected(random_pic)">
+						<div class="panel-body text-center ">
+							<div>
+								<img style="width: 150px; height: 150px;" ng-src={{random_pic}}
+								err-SRC="http://centralnormal.spdev.co.nz/images/custom/Staff/NoPerson.png" />
+							</div>
+							{{visitor_city}}
+						</div>
+					</a>
+				</div>
+
+			</div>
+
+
+		</div>
+		<!-- /.panel-body -->
+
+
+
+	</div>
+	<!-- /.panel -->
+</div>
+<!--Meet someone new Panel End-->
+
+

@@ -1,0 +1,51 @@
+<div class="row">
+	<!--Side ad panel begin-->
+	<div class="col-lg-2">
+		<img id="image-4" src="http://placekitten.com.s3.amazonaws.com/homepage-samples/200/286.jpg" alt="">
+		<p></p>
+		<p></p>
+		<img id="image-4" src="http://placekitten.com.s3.amazonaws.com/homepage-samples/200/286.jpg" alt="">
+	</div>
+	<!--Side ad panel end-->
+
+	<div ng-controller="ListPersonsController" ng-init="init()" class="col-lg-8">
+		<p></p>
+		<div ng-show="isLoading">
+			<p></p>
+			<img ng-src="https://i1.wp.com/cdnjs.cloudflare.com/ajax/libs/galleriffic/2.0.1/css/loader.gif">
+		</div>
+
+<!-- Pic, Age, Occupation, City, Marital Status, Likes , LastLogin-->
+		<table ng-table="tableParams" class="table"  ng-hide="isLoading">
+			<tr ng-repeat="user in $data">
+				<td data-title="'Picture'" sortable=""><a href="#PersonDetails" ng-click="personFromListSelected(user.id)"> <img ng-src={{getImgUrl(user.main_img)}}
+							err-SRC="http://centralnormal.spdev.co.nz/images/custom/Staff/NoPerson.png" style="width: 100px; height: 100px;" /></a></td>
+
+				<td data-title="'Name'" sortable="'username'"><a href="#PersonDetails" ng-click="personFromListSelected(user.id)">{{user.username}} </a></td>
+				
+				<td data-title="'Occupation'" sortable="'age'"><a href="#PersonDetails" ng-click="personFromListSelected(user.id)">{{user.occupation}}</a></td>
+				
+				<td data-title="'City'" sortable="'profession'"><a href="#PersonDetails" ng-click="personFromListSelected(user.id)">{{user.city}}</a></td>
+				
+				<td data-title="'Likes'" sortable="'religion'"><a href="#PersonDetails" ng-click="personFromListSelected(user.id)">{{user.likes}}</a></td>
+				
+				<td data-title="'Online'" sortable="'last_login'"><a href="#PersonDetails" ng-click="personFromListSelected(user.id)">{{ getStatus(user.online_status,user.last_login) }}</a></td>
+			</tr>
+		</table>
+		<div class="text-center" ng-hide="areResultsPresent()">
+			<mark>None so far.</mark>
+		</div>
+		<div class="text-center" ng-show="serviceErrored">
+			<mark>Oops. Something very bad just happened. Try refreshing your browser.</mark>
+		</div>
+	</div>
+
+	<!--Side ad panel begin-->
+	<div class="col-lg-2">
+		<img id="image-4" src="http://placekitten.com.s3.amazonaws.com/homepage-samples/200/286.jpg" alt="">
+		<p></p>
+		<p></p>
+		<img id="image-4" src="http://placekitten.com.s3.amazonaws.com/homepage-samples/200/286.jpg" alt="">
+	</div>
+	<!--Side ad panel end-->
+</div>

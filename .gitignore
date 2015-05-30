@@ -1,0 +1,8 @@
+*.DS_Store
+*.iml
+phantomjsdriver.log
+target/
+.idea
+.project
+.settings/
+.apt_generated/

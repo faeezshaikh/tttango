@@ -1,0 +1,92 @@
+<!--Ad panel - Horizontal start-->
+<div class="row text-center">
+	<div class="col-md-12">
+
+		<img src="http://placehold.it/728x90">
+	</div>
+</div>
+<p></p>
+<!--Ad panel - Horizontal end-->
+
+<div class="row">
+	<!--Side ad panel begin-->
+	<div class="col-lg-2">
+		<img id="image-4"
+			src="http://placekitten.com.s3.amazonaws.com/homepage-samples/200/286.jpg"
+			alt="">
+		<p></p>
+		<p></p>
+		<img id="image-4"
+			src="http://placekitten.com.s3.amazonaws.com/homepage-samples/200/286.jpg"
+			alt="">
+	</div>
+	<!--Side ad panel end-->
+
+
+	<!-- Read your messages Panel Begin-->
+	<div ng-controller="LikedMeController" ng-init="readme()"
+		class="col-lg-8">
+		<div class="panel panel-default">
+			<div class="panel-heading text-center">These folks have read
+				the message you sent them!</div>
+			<div class="panel-body">
+
+				<table ng-table="tableParams" class="table">
+					<tr ng-repeat="user in $data">
+						<td data-title="'Picture'" sortable="">
+							<!--<img src={{user.pic}} width="20%" height="25%" />-->
+
+							<div class="panel">
+
+								<div class="panel-body text-center">
+									<div>
+										<img
+											src="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcSLimil6rTwQL2JfN15ZHblzCMfX_m7yCNgUvw0V_tb7WrX9cYRXj1Qvic" />
+									</div>
+									<div>Vivacious, out-going and happy</div>
+								</div>
+							</div>
+						</td>
+						<td data-title="'Age'" sortable="'name'"><a
+							href="#PersonDetails" ng-click="SelectPerson(user)">{{user.name}}
+						</a></td>
+						<td data-title="'Likes'" sortable="'networth'">
+							{{user.networth}}</td>
+						<td data-title="'Location'" sortable="'profession'">
+							{{user.profession}}</td>
+						<td data-title="'Intent'" sortable="'religion'">
+							{{user.religion}}</td>
+						<td data-title="'Ethnicity'" sortable="'status'">
+							{{user.status}}</td>
+						<td data-title="'Online'" sortable="'status'">Yes</td>
+					</tr>
+				</table>
+
+
+			</div>
+
+
+
+		</div>
+
+	</div>
+	<!-- Read your messages Panel End-->
+
+
+	<!--Side ad panel begin-->
+	<div class="col-lg-2">
+		<img id="image-4"
+			src="http://placekitten.com.s3.amazonaws.com/homepage-samples/200/286.jpg"
+			alt="">
+		<p></p>
+		<p></p>
+		<img id="image-4"
+			src="http://placekitten.com.s3.amazonaws.com/homepage-samples/200/286.jpg"
+			alt="">
+	</div>
+	<!--Side ad panel end-->
+</div>
+
+
+
+

@@ -1,0 +1,59 @@
+<div class="row">
+	<!--Side ad panel begin-->
+	<div class="col-lg-2">
+		<img id="image-4" src="http://placekitten.com.s3.amazonaws.com/homepage-samples/200/286.jpg" alt="">
+		<p></p>
+		<p></p>
+		<img id="image-4" src="http://placekitten.com.s3.amazonaws.com/homepage-samples/200/286.jpg" alt="">
+	</div>
+	<!--Side ad panel end-->
+
+	<div ng-controller="LikedMeController" ng-init="init()" class="col-lg-8">
+		<p></p>
+		<div ng-show="isLoading">
+			Loading all the good people who liked you. Please wait...
+			<p></p>
+			<img ng-src="https://i1.wp.com/cdnjs.cloudflare.com/ajax/libs/galleriffic/2.0.1/css/loader.gif">
+		</div>
+
+		<div ng-hide="isLoading" class="text-center">
+			<label>These are the people who liked your profile.</label>
+		</div>
+		<table ng-hide="isLoading" ng-table="tableParams" class="table">
+			<tr ng-repeat="liker in $data">
+				<td data-title="'Picture'" sortable=""><a href="#PersonDetails" ng-click="personFromListSelected(liker.likers_id)"> <img ng-src={{liker.likers_pic_url}}
+						err-SRC="http://centralnormal.spdev.co.nz/images/custom/Staff/NoPerson.png" style="width: 100px; height: 100px;" /></a></td>
+
+				<td data-title="'Age'" sortable="'likers_age'"><a href="#PersonDetails" ng-click="personFromListSelected(liker.likers_id)">{{liker.likers_age}} </a></td>
+
+				<td data-title="'Occupation'" sortable="'likers_occupation'"><a href="#PersonDetails" ng-click="personFromListSelected(liker.likers_id)">{{liker.likers_occupation}} </a></td>
+
+				<td data-title="'City'" sortable="'likers_city'"><a href="#PersonDetails" ng-click="personFromListSelected(liker.likers_id)">{{liker.likers_city}} </a></td>
+
+				<td data-title="'Likes'" sortable="'likers_likes'"><a href="#PersonDetails" ng-click="personFromListSelected(liker.likers_id)">{{liker.likers_likes}} </a></td>
+
+<!-- 				<td data-title="'Views'" sortable="'likers_views'"><a href="#PersonDetails" ng-click="personFromListSelected(liker.likers_id)"> {{liker.likers_views}}</a></td>
+				<td data-title="'Meet Requests'" sortable="'likers_meetReqs'"><a href="#PersonDetails" ng-click="personFromListSelected(liker.likers_id)"> {{liker.likers_meetReqs}}</a></td> -->
+
+				<td data-title="'Liked When'" sortable="'like_time'"><a href="#PersonDetails" ng-click="personFromListSelected(liker.likers_id)"> {{liker.like_time}}</a></td>
+
+				<td data-title="'Online'" sortable="'likers_onlineStatus'"><a href="#PersonDetails" ng-click="personFromListSelected(liker.likers_id)"> {{liker.likers_onlineStatus}}</a></td>
+			</tr>
+		</table>
+		<div class="text-center" ng-hide="areResultsPresent()">
+			<mark>None so far.</mark>
+		</div>
+		<div class="text-center" ng-show="serviceErrored">
+			<mark>Oops. Something very bad just happened. Try refreshing your browser.</mark>
+		</div>
+	</div>
+
+	<!--Side ad panel begin-->
+	<div class="col-lg-2">
+		<img id="image-4" src="http://placekitten.com.s3.amazonaws.com/homepage-samples/200/286.jpg" alt="">
+		<p></p>
+		<p></p>
+		<img id="image-4" src="http://placekitten.com.s3.amazonaws.com/homepage-samples/200/286.jpg" alt="">
+	</div>
+	<!--Side ad panel end-->
+</div>

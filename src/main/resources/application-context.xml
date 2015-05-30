@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans:beans xmlns="http://www.springframework.org/schema/mvc"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:beans="http://www.springframework.org/schema/beans"
+	xmlns:security="http://www.springframework.org/schema/security"
+	xmlns:context="http://www.springframework.org/schema/context" xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.0.xsd
+		http://www.springframework.org/schema/security
+          http://www.springframework.org/schema/security/spring-security-3.1.xsd">
+
+
+
+	<!-- Use default Auth0 security context -->
+	<beans:import resource="classpath:auth0-security-context.xml" />
+
+	<context:component-scan base-package="com.faeez,com.auth0" />
+
+	<!-- Process annotations on registered beans like @Autowired... -->
+	<context:annotation-config />
+
+	<!-- Enables the Spring MVC @Controller programming model -->
+	<annotation-driven />
+
+	<!-- Read auth0.properties file -->
+	<context:property-placeholder location="classpath:auth0.properties" />
+
+	<!-- This tag allows for mapping the DispatcherServlet to "/" -->
+	<default-servlet-handler />
+
+
+	<!-- for file uploads -->
+	<beans:bean id="multipartResolver"
+		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<beans:property name="maxUploadSize" value="50000000" />
+	</beans:bean>
+
+
+	<!-- Handles HTTP GET requests for /resources/** by efficiently serving 
+		up static resources in the ${webappRoot}/resources directory -->
+	<resources mapping="/resources/**" location="/resources/" />
+
+	<beans:bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
+		destroy-method="close">
+		<beans:property name="driverClassName" value="com.mysql.jdbc.Driver" />
+		<beans:property name="url"
+			value="jdbc:mysql://networth2.csjpgmmzoxgz.us-west-2.rds.amazonaws.com:3306/networth?autoReconnect=true" />
+		<beans:property name="username" value="networth" />
+		<beans:property name="password" value="networth" />
+	</beans:bean>
+
+	<!-- Hibernate 4 SessionFactory Bean definition -->
+	<beans:bean id="hibernate4AnnotatedSessionFactory"
+		class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+		<beans:property name="dataSource" ref="dataSource" />
+		<beans:property name="annotatedClasses">
+			<beans:list>
+				<beans:value>com.faeez.model.Member</beans:value>
+				<beans:value>com.faeez.model.Email</beans:value>
+				<beans:value>com.faeez.model.ProfileView</beans:value>
+				<beans:value>com.faeez.model.LikeMe</beans:value>
+				<beans:value>com.faeez.model.MeetMe</beans:value>
+				<beans:value>com.faeez.model.Contact</beans:value>
+				<beans:value>com.faeez.model.Report</beans:value>
+				
+			</beans:list>
+		</beans:property>
+		<beans:property name="hibernateProperties">
+			<beans:props>
+				<beans:prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect
+				</beans:prop>
+				<beans:prop key="hibernate.show_sql">true</beans:prop>
+			</beans:props>
+		</beans:property>
+	</beans:bean>
+
+
+	<beans:bean id="memberDao" class="com.faeez.dao.MemberDaoImpl">
+		<beans:property name="sessionFactory"
+			ref="hibernate4AnnotatedSessionFactory" />
+	</beans:bean>
+	
+
+	<beans:bean id="memberService" class="com.faeez.service.MemberServiceImpl">
+		<beans:property name="memberDao" ref="memberDao"></beans:property>
+		<beans:property name="pViewDao" ref="profileViewDao"></beans:property>
+		<beans:property name="meetMeDao" ref="meetMeDao"></beans:property>
+		<beans:property name="likeMeDao" ref="likeMeDao"></beans:property>
+	</beans:bean>
+
+
+	<beans:bean id="emailDao" class="com.faeez.dao.EmailDaoImpl">
+		<beans:property name="sessionFactory"
+			ref="hibernate4AnnotatedSessionFactory" />
+	</beans:bean>
+
+	<beans:bean id="emailService" class="com.faeez.service.EmailServiceImpl">
+		<beans:property name="emailDao" ref="emailDao"></beans:property>
+		<beans:property name="memberDao" ref="memberDao"></beans:property>
+	</beans:bean>
+
+	<beans:bean id="profileViewDao" class="com.faeez.dao.ProfileViewDaoImpl">
+		<beans:property name="sessionFactory"
+			ref="hibernate4AnnotatedSessionFactory" />
+	</beans:bean>
+
+	<beans:bean id="profileViewService" class="com.faeez.service.ProfileViewServiceImpl">
+		<beans:property name="profileViewDao" ref="profileViewDao"></beans:property>
+		<beans:property name="memberDao" ref="memberDao"></beans:property>
+	</beans:bean>
+
+	<beans:bean id="likeMeDao" class="com.faeez.dao.LikeMeDaoImpl">
+		<beans:property name="sessionFactory"
+			ref="hibernate4AnnotatedSessionFactory" />
+	</beans:bean>
+
+	<beans:bean id="likeMeService" class="com.faeez.service.LikeMeServiceImpl">
+		<beans:property name="likeMeDao" ref="likeMeDao"></beans:property>
+		<beans:property name="memberDao" ref="memberDao"></beans:property>
+	</beans:bean>
+
+	<beans:bean id="meetMeDao" class="com.faeez.dao.MeetMeDaoImpl">
+		<beans:property name="sessionFactory"
+			ref="hibernate4AnnotatedSessionFactory" />
+	</beans:bean>
+
+	<beans:bean id="meeMeService" class="com.faeez.service.MeetMeServiceImpl">
+		<beans:property name="meetMeDao" ref="meetMeDao"></beans:property>
+	</beans:bean>
+
+	<beans:bean id="awsService" class="com.faeez.service.AwsServiceImpl"></beans:bean>
+
+ 
+ 
+ 	 <beans:bean id="transferManager" class="com.amazonaws.services.s3.transfer.TransferManager">
+        <beans:constructor-arg ref="awsCredentials"/>
+    </beans:bean>
+    
+	 <beans:bean id="awsClient" class="com.amazonaws.services.s3.AmazonS3Client">
+        <beans:constructor-arg ref="awsCredentials"/>
+    </beans:bean>
+    
+    
+	 <beans:bean id="awsCredentials" class="com.amazonaws.auth.BasicAWSCredentials">
+        <beans:constructor-arg value="AKIAJ2JTZQU3OJ65FKGQ"/>
+        <beans:constructor-arg value="gxc8T7NcVR1iNNQGCo3NvPmvwYG3FfyvANl5wiEw"/>
+    </beans:bean>
+
+
+	<tx:annotation-driven transaction-manager="transactionManager" />
+
+	<beans:bean id="transactionManager"
+		class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+		<beans:property name="sessionFactory"
+			ref="hibernate4AnnotatedSessionFactory" />
+	</beans:bean>
+
+	<beans:bean class="org.springframework.web.servlet.view.ContentNegotiatingViewResolver">
+		<beans:property name="order" value="1" />
+		<beans:property name="contentNegotiationManager">
+			<beans:bean class="org.springframework.web.accept.ContentNegotiationManager">
+				<beans:constructor-arg>
+					<beans:bean
+						class="org.springframework.web.accept.PathExtensionContentNegotiationStrategy">
+						<beans:constructor-arg>
+							<beans:map>
+								<beans:entry key="json" value="application/json" />
+								<beans:entry key="xml" value="application/xml" />
+							</beans:map>
+						</beans:constructor-arg>
+					</beans:bean>
+				</beans:constructor-arg>
+			</beans:bean>
+		</beans:property>
+
+		<beans:property name="defaultViews">
+			<beans:list>
+				<beans:bean
+					class="org.springframework.web.servlet.view.json.MappingJacksonJsonView" />
+				<beans:bean
+					class="org.springframework.web.servlet.view.xml.MarshallingView">
+					<beans:constructor-arg>
+						<beans:bean class="org.springframework.oxm.xstream.XStreamMarshaller">
+							<beans:property name="autodetectAnnotations"
+								value="true" />
+						</beans:bean>
+					</beans:constructor-arg>
+				</beans:bean>
+			</beans:list>
+		</beans:property>
+	</beans:bean>
+
+</beans:beans>

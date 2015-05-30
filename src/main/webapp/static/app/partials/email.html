@@ -1,0 +1,69 @@
+<div class="row">
+	<!--Side ad panel begin-->
+	<div class="col-lg-2">
+		<img id="image-4" src="http://placekitten.com.s3.amazonaws.com/homepage-samples/200/286.jpg" alt="">
+		<p></p>
+		<p></p>
+		<img id="image-4" src="http://placekitten.com.s3.amazonaws.com/homepage-samples/200/286.jpg" alt="">
+	</div>
+	<!--Side ad panel end-->
+
+	<div ng-controller="EmailController" ng-init="init()" class="col-lg-8">
+		<div class="row">
+
+			<div class="col-md-12">
+				<div class="panel panel-default" ng-repeat="email in emailConversations | orderBy: 'email_time_millis' ">
+					<div class="panel-body">
+
+						<div>
+							<a href="#PersonDetails" ng-click="picInsideEmailClicked(email.senders_profile_id)"> 
+								<img style="width: 50px; height: 50px;" id="image-4" ng-src={{email.senders_pic_url}}
+								err-SRC="http://centralnormal.spdev.co.nz/images/custom/Staff/NoPerson.png" alt="">
+							</a> <small>{{email.email_time_millis}}</small>
+
+							<blockquote>
+								<p>
+									<small>{{email.message}}</small>
+								</p>
+							</blockquote>
+						</div>
+
+
+					</div>
+				</div>
+
+
+				<!-- Send quick msg box start -->
+				<div class=" panel panel-default">
+
+					<div class="form-group">
+						<div class="text-center">
+							<label>Send {{person.name}} a quick message:</label>
+						</div>
+						<textarea class="form-control" ng-model="emailContent" rows="4"></textarea>
+						<p></p>
+						<div class="text-center">
+							<a href="#HomePage">
+								<button type="submit" class="btn btn-success" ng-click="sendMessage()">Send Message</button>
+							</a>
+						</div>
+
+					</div>
+				</div>
+
+				<!-- Send quick msg box end -->
+			</div>
+		</div>
+
+	</div>
+
+
+	<!--Side ad panel begin-->
+	<div class="col-lg-2">
+		<img id="image-4" src="http://placekitten.com.s3.amazonaws.com/homepage-samples/200/286.jpg" alt="">
+		<p></p>
+		<p></p>
+		<img id="image-4" src="http://placekitten.com.s3.amazonaws.com/homepage-samples/200/286.jpg" alt="">
+	</div>
+	<!--Side ad panel end-->
+</div>

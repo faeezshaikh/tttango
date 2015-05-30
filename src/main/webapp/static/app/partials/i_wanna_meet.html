@@ -1,0 +1,58 @@
+<div class="row">
+	<!--Side ad panel begin-->
+	<div class="col-lg-2">
+		<img id="image-4" src="http://placekitten.com.s3.amazonaws.com/homepage-samples/200/286.jpg" alt="">
+		<p></p>
+		<p></p>
+		<img id="image-4" src="http://placekitten.com.s3.amazonaws.com/homepage-samples/200/286.jpg" alt="">
+	</div>
+	<!--Side ad panel end-->
+
+	<div ng-controller="IWannaMeetController" ng-init="init()" class="col-lg-8">
+<p></p>
+		<div ng-show="isLoading">
+			Loading all the people who you wanna meet. Please wait...
+			<p></p>
+			<img ng-src="https://i1.wp.com/cdnjs.cloudflare.com/ajax/libs/galleriffic/2.0.1/css/loader.gif">
+		</div>
+
+		<div ng-hide="isLoading" class="text-center">
+			<label>{{getSize()}} Users you want to meet sorted by your request time.</label>
+		</div>
+		<table ng-hide="isLoading" ng-table="tableParams" class="table">
+			<tr ng-repeat="meeter in $data">
+			
+				<td data-title="'Picture'" sortable=""><a href="#PersonDetails" ng-click="personFromListSelected(meeter.profile_id)"> <img ng-src={{getImgUrl(meeter.main_img)}}
+						err-SRC="http://centralnormal.spdev.co.nz/images/custom/Staff/NoPerson.png" style="width: 100px; height: 100px;" /></a></td>
+
+				<td data-title="'Age'" sortable="'birth'"><a href="#PersonDetails" ng-click="personFromListSelected(meeter.profile_id)">{{processDate(meeter.birth)}} </a></td>
+
+				<td data-title="'Occupation'" sortable="'occupation'"><a href="#PersonDetails" ng-click="personFromListSelected(meeter.profile_id)">{{meeter.occupation}} </a></td>
+
+				<td data-title="'City'" sortable="'city'"><a href="#PersonDetails" ng-click="personFromListSelected(meeter.profile_id)">{{meeter.city}} </a></td>
+
+				<td data-title="'Country'" sortable="'country'"><a href="#PersonDetails" ng-click="personFromListSelected(meeter.profile_id)">{{meeter.country}} </a></td>
+				<td data-title="'Likes'" sortable="'likes'"><a href="#PersonDetails" ng-click="personFromListSelected(meeter.profile_id)">{{meeter.likes}} </a></td>
+
+				<td data-title="'You Requested When'" sortable="'meet_req_when'"><a href="#PersonDetails" ng-click="personFromListSelected(meeter.profile_id)"> {{ processDate(meeter.meet_req_when)}}</a></td>
+
+				<td data-title="'Last Online'" sortable="'last_login'"><a href="#PersonDetails" ng-click="personFromListSelected(meeter.profile_id)"> {{processOnlineStatus(meeter.online_status,meeter.last_login)}}</a></td>
+			</tr>
+		</table>
+		<div class="text-center" ng-hide="areResultsPresent()">
+			<mark>None so far.</mark>
+		</div>
+		<div class="text-center" ng-show="serviceErrored">
+			<mark>Oops. Something very bad just happened. Try refreshing your browser.</mark>
+		</div>
+	</div>
+
+	<!--Side ad panel begin-->
+	<div class="col-lg-2">
+		<img id="image-4" src="http://placekitten.com.s3.amazonaws.com/homepage-samples/200/286.jpg" alt="">
+		<p></p>
+		<p></p>
+		<img id="image-4" src="http://placekitten.com.s3.amazonaws.com/homepage-samples/200/286.jpg" alt="">
+	</div>
+	<!--Side ad panel end-->
+</div>

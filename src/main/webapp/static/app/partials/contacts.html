@@ -1,0 +1,90 @@
+<div class="row">
+	<!--Side ad panel begin-->
+	<div class="col-lg-2">
+		<img id="image-4" src="http://placekitten.com.s3.amazonaws.com/homepage-samples/200/286.jpg" alt="">
+		<p></p>
+		<p></p>
+		<img id="image-4" src="http://placekitten.com.s3.amazonaws.com/homepage-samples/200/286.jpg" alt="">
+	</div>
+	<!--Side ad panel end-->
+
+	<div ng-controller="ContactsController" ng-init="init()" class="col-lg-8">
+		<p></p>
+		<div ng-show="isLoading">
+			Finding all your contacts. Please wait...
+			<p></p>
+			<img ng-src="https://i1.wp.com/cdnjs.cloudflare.com/ajax/libs/galleriffic/2.0.1/css/loader.gif">
+		</div>
+
+
+		<!-- <div class="panel panel-primary" ng-repeat="contact in contactList">
+			<a href="#PersonDetails" ng-click="personFromListSelected(contact)"> <img ng-src={{getImgUrl(contact)}} err-SRC="http://centralnormal.spdev.co.nz/images/custom/Staff/NoPerson.png"
+				style="width: 200px; height: 200px;" />
+			</a>
+		</div> -->
+
+
+
+		<div class="row col-lg-12">
+			<div class="panel panel-default">
+				<div class="panel-heading text-center">
+					<strong>Your Contacts. </strong>
+							<input type="text" ng-model="searchFor" class="form-control"
+								placeholder="Search Contacts" name="srch-term" id="srch-term">
+				</div>
+				<div class="panel-body">
+
+
+					<div class="col-md-12 ">
+
+						<div ng-repeat="contact in contactList | filter:searchFor" class="panel panel-default col-md-3">
+
+							<div class="panel-heading">
+								<!-- <strong class="panel-title">{{contact.contact_username}}</strong>  -->
+								
+								<label><span >{{contact.contact_username | limitTo: 8}}</span> </label>
+								<div style="float: right; width: 20px; height: 20px;" class="pull-right">
+									<img class="trashDiv" ng-click="deleteContact(contact.contact_id)" src="https://s3-us-west-2.amazonaws.com/mbuds/ClosedTrash.png" onmouseover="this.src='https://s3-us-west-2.amazonaws.com/mbuds/OpenTrash.png'" onmouseout="this.src='https://s3-us-west-2.amazonaws.com/mbuds/ClosedTrash.png'" />
+								</div>
+
+
+
+
+							</div>
+							<div class="panel-body">
+
+								<a href="#PersonDetails" ng-click="personFromListSelected(contact.contact_id)"> <img ng-src={{getImgUrl(contact.contact_id)}}
+									err-SRC="http://centralnormal.spdev.co.nz/images/custom/Staff/NoPerson.png" style="width: 150px; height: 120px;" />
+								</a>
+
+							</div>
+
+
+						</div>
+
+
+					</div>
+
+
+
+				</div>
+			</div>
+		</div>
+
+		<div class="text-center" ng-hide="areResultsPresent()">
+			<mark>None so far.</mark>
+		</div>
+		<div class="text-center" ng-show="serviceErrored">
+			<mark>Oops. Something very bad just happened. Try refreshing your browser.</mark>
+		</div>
+	</div>
+
+	<!--Side ad panel begin-->
+	<div class="col-lg-2">
+		<img id="image-4" src="http://placekitten.com.s3.amazonaws.com/homepage-samples/200/286.jpg" alt="">
+		<p></p>
+		<p></p>
+		<img id="image-4" src="http://placekitten.com.s3.amazonaws.com/homepage-samples/200/286.jpg" alt="">
+	</div>
+	<!--Side ad panel end-->
+</div>

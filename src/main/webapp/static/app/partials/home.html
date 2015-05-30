@@ -1,0 +1,296 @@
+<!--Ad panel - Horizontal start-->
+<div class="row text-center" ng-show="isUserConfirmed()">
+	<div class="col-md-12">
+
+		<img src="http://placehold.it/728x90">
+	</div>
+</div>
+<p></p>
+<!--Ad panel - Horizontal end-->
+
+<div ng-show="!isUserConfirmed()" class="col-lg-12" class="text-center">
+	<h2>
+		<span class="text-center label label-danger">Pending confirmation: You need to confirm by clicking the link sent to your email. Email : {{ user.email }}</span>
+	</h2>
+</div>
+
+<!--Meet someone new Panel Begin-->
+<div ng-controller="HomePageController" ng-init="init()" ng-show="isUserConfirmed()" class="col-lg-12">
+	<div class="panel panel-default">
+		<div class="panel-heading text-center">
+			<strong> Meet someone new today</strong>
+		</div>
+		<!-- /.panel-heading -->
+		<div class="panel-body text-center">
+			<!-- Nav tabs -->
+
+			<div class="col-md-12 text-center ">
+
+
+				<div ng-repeat="random_pic_url in random_profile_pic_urls track by $index" class="panel  col-md-3">
+
+					<a href="#PersonDetails" ng-click="randomPersonSelected(random_pic_url)">
+						<div class="panel-body text-center ">
+							<div>
+								<img style="width: 150px; height: 150px;" ng-src={{random_pic_url}} err-SRC="http://centralnormal.spdev.co.nz/images/custom/Staff/NoPerson.png" />
+
+							</div>
+							(Online)
+						</div>
+					</a>
+				</div>
+			</div>
+
+
+		</div>
+		<!-- /.panel-body -->
+
+
+
+	</div>
+	<!-- /.panel -->
+</div>
+<!--Meet someone new Panel End-->
+
+
+<!--Dashboard Panel begin-->
+<div ng-show="isUserConfirmed()" class="row">
+	<div class="col-lg-3 col-md-6">
+		<a href="#LikedMePage">
+			<div class="panel panel-primary">
+				<div class="panel-heading">
+					<div class="row">
+						<div class="col-xs-3">
+							<i class="fa fa-thumbs-o-up fa-5x"></i>
+						</div>
+						<div class="col-xs-9 text-right">
+							<div class="huge">Likes</div>
+							<div>Who liked you!</div>
+						</div>
+					</div>
+				</div>
+				<div class="panel-footer">
+					<span class="pull-left">View Details</span> <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+					<div class="clearfix"></div>
+				</div>
+			</div>
+		</a>
+	</div>
+
+	<div class="col-lg-3 col-md-6">
+		<a href="#ViewedMePage">
+			<div class="panel panel-green">
+				<div class="panel-heading">
+					<div class="row">
+						<div class="col-xs-3">
+							<i class="fa fa-eye fa-5x"></i>
+						</div>
+
+						<div class="col-xs-9 text-right">
+							<div class="huge">Views</div>
+							<div>Who Viewed you!</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="panel-footer">
+					<span class="pull-left">View Details</span><sup><span class="badge">New</span></sup> <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+					<div class="clearfix"></div>
+				</div>
+			</div>
+		</a>
+	</div>
+
+
+	<div class="col-lg-3 col-md-6">
+		<a href="#WannaMeetMePage">
+			<div class="panel panel-yellow">
+				<div class="panel-heading">
+					<div class="row">
+						<div class="col-xs-3">
+							<i class="fa fa-heart-o fa-5x"></i>
+						</div>
+						<div class="col-xs-9 text-right">
+							<div class="huge">Meets</div>
+							<div>Who wanna meet you!</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="panel-footer">
+					<span class="pull-left">View Details</span> <sup><span class="badge">New</span></sup> <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+					<div class="clearfix"></div>
+				</div>
+			</div>
+		</a>
+	</div>
+
+	<div class="col-lg-3 col-md-6" ng-controller="EmailController">
+		<a href="#SentItemsPage">
+			<div class="panel panel-red">
+				<div class="panel-heading">
+					<div class="row">
+						<div class="col-xs-3">
+							<i class="fa fa-envelope fa-5x"></i>
+						</div>
+						<div class="col-xs-9 text-right">
+							<div class="huge">Sent</div>
+							<div>Who read your msgs!</div>
+						</div>
+					</div>
+				</div>
+				<a href="#SentItemsPage">
+					<div class="panel-footer">
+						<span class="pull-left">View Details</span> <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+						<div class="clearfix"></div>
+					</div>
+				</a>
+			</div>
+		</a>
+	</div>
+	<!--Side ad panel begin-->
+	<div class="col-lg-3">
+		<img src="http://placehold.it/350x150">
+		<p></p>
+
+	</div>
+	<!--Side ad panel end-->
+
+
+	<div class="col-lg-3 col-md-6">
+		<a href="#ILikedThemPage">
+			<div class="panel panel-red">
+				<div class="panel-heading">
+					<div class="row">
+						<div class="col-xs-3">
+							<i class="fa fa-thumbs-up fa-5x"></i>
+						</div>
+						<div class="col-xs-9 text-right">
+							<div class="huge">i-Likes</div>
+							<div>Folks who I liked!</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="panel-footer">
+					<span class="pull-left">View Details</span> <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+					<div class="clearfix"></div>
+				</div>
+			</div>
+		</a>
+	</div>
+
+
+
+	<div class="col-lg-3 col-md-6">
+		<a href="#IWannaMeetPage">
+			<div class="panel panel-primary">
+				<div class="panel-heading">
+					<div class="row">
+						<div class="col-xs-3">
+							<i class="fa fa-heart fa-5x"></i>
+						</div>
+						<div class="col-xs-9 text-right">
+							<div class="huge">i-Meets</div>
+							<div>I wanna meet!</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="panel-footer">
+					<span class="pull-left">View Details</span> <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+					<div class="clearfix"></div>
+				</div>
+			</div>
+		</a>
+	</div>
+
+
+	<!--Side ad panel begin-->
+	<div class="col-lg-3">
+		<img src="http://placehold.it/350x150">
+		<p></p>
+
+	</div>
+	<!--Side ad panel end-->
+
+
+
+</div>
+<!--Dashboard Panel end-->
+
+<!--Ad panel - Horizontal start-->
+<div class="row text-center" ng-show="isUserConfirmed()">
+	<div class="col-md-12">
+
+		<img src="http://placehold.it/728x90">
+	</div>
+</div>
+<p></p>
+<!--Ad panel - Horizontal end-->
+
+<div ng-show="isUserConfirmed()" class="row">
+	<!--Side ad panel begin-->
+	<div class="col-lg-2">
+		<img id="image-4" src="http://placekitten.com.s3.amazonaws.com/homepage-samples/200/286.jpg" alt="">
+		<p></p>
+		<p></p>
+		<img id="image-4" src="http://placekitten.com.s3.amazonaws.com/homepage-samples/200/286.jpg" alt="">
+	</div>
+	<!--Side ad panel end-->
+
+
+	<!-- Inboxed me Panel Begin-->
+	<div ng-controller="HomePageController" ng-init="inboxme()" class="col-lg-8">
+		<div class="panel panel-default">
+			<div ng-hide="isLoading" class="panel-heading text-center">Your message inbox</div>
+			<div ng-show="isLoading" class="panel-heading text-center">
+			Loding inbox..
+			<p></p>
+			<img ng-src="https://s3-us-west-2.amazonaws.com/tttango/spinner.gif">
+			</div>
+			<div class="panel-body">
+
+				<table ng-table="tableParams" class="table table-hover text-center">
+					<tr ng-repeat="email in $data">
+						<td data-title="'Picture'" sortable="" ng-class="{'unread': email.is_conversation_new == 'y'}"><a href="#EmailPage" ng-click="openEmailFromInbox(email)"><img
+								style="width: 150px; height: 150px;" ng-src={{email.senders_pic_url}} err-SRC="http://centralnormal.spdev.co.nz/images/custom/Staff/NoPerson.png" /></a></td>
+
+						<td data-title="'Message'" sortable="'message'" ng-class="{'unread': email.is_conversation_new == 'y'}"><a href="#EmailPage" ng-click="openEmailFromInbox(email)"> {{email.message |
+								limitTo: 20}} {{email.message.length < 20 ? '' : '...'}} </a></td>
+						<td data-title="'Time'" sortable="'email_time_millis'" ng-class="{'unread': email.is_conversation_new == 'y'}"><a href="#EmailPage" ng-click="openEmailFromInbox(email)">
+								{{pretty(email.email_time_millis)}} </a></td>
+
+						<td data-title="'Online'" sortable="'status'" ng-class="{'unread': email.is_conversation_new == 'y'}">Yes</td>
+					</tr>
+				</table>
+				
+				<div class="text-center" ng-hide="areResultsPresent()">
+					<mark>No messages so far.</mark>
+				</div>
+				<div class="text-center" ng-show="serviceErrored">
+					<mark>Oops. Something very bad just happened. Fret not! Just refresh your browser.</mark>
+				</div>
+
+			</div>
+
+
+
+		</div>
+
+	</div>
+	<!-- Inboxed me Panel End-->
+
+	<!--Side ad panel begin-->
+	<div class="col-lg-2">
+		<img id="image-4" src="http://placekitten.com.s3.amazonaws.com/homepage-samples/200/286.jpg" alt="">
+		<p></p>
+		<p></p>
+		<img id="image-4" src="http://placekitten.com.s3.amazonaws.com/homepage-samples/200/286.jpg" alt="">
+	</div>
+	<!--Side ad panel end-->
+
+
+
+</div>
+

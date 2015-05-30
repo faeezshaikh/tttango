@@ -1,0 +1,272 @@
+<!--Ad panel - Horizontal start-->
+<div ng-controller="PersonDetailsUnregisteredController" ng-init="init()">
+
+	<div style="display: none; position: absolute; z-index: 110; left: 400; top: 100; width: 15; height: 15" id="preview_div"></div>
+	<div class="row text-center">
+		<div class="col-md-12">
+
+			<img src="http://placehold.it/728x90">
+		</div>
+	</div>
+	<p></p>
+	<!--Ad panel - Horizontal end-->
+
+	<div class="row ">
+
+		<div class="col-lg-4" ng-controller="PersonDetailsUnregisteredController">
+			<div class="panel panel-default">
+				<div class="panel-heading text-center">
+					<h1 class="panel-title ">
+						<b>{{person.name}}</b>
+					</h1>
+				</div>
+				<div class="panel-body text-center">
+					<img style="width: 300px; height: 250px;" ng-src={{personImgUrl}} err-SRC="http://centralnormal.spdev.co.nz/images/custom/Staff/NoPerson.png" />
+					<p></p>
+
+
+					<div>
+						<strong>Like My Profile?</strong>
+					</div>
+					<p></p>
+					<div class="onoffswitch">
+						<input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch" ng-model="chkbox" ng-click="likeClicked()"> <label class="onoffswitch-label" for="myonoffswitch">
+							<span class="onoffswitch-inner"></span> <span class="onoffswitch-switch"></span>
+						</label>
+					</div>
+					<p></p>
+					Total likes = {{ likeCount }}
+					<p></p>
+					<a href="#/LoginPage">{{ signup_msg }}</a>
+
+				</div>
+
+
+
+			</div>
+		</div>
+
+
+
+		<!--<div class="row col-md-8">-->
+		<div class=" col-lg-4 ">
+			<div class="panel-body">
+				<table class="table table-hover">
+					<tbody>
+						<tr>
+							<td><strong>Age:</strong></td>
+							<td>{{person.age==0?'-':person.age}}</td>
+						</tr>
+						<tr>
+							<td><strong>Occupation:</strong></td>
+							<td>{{person.occupation}}</td>
+						</tr>
+						<tr>
+							<td><strong>Annual Income:</strong></td>
+							<td>{{person.income}}</td>
+						</tr>
+						<tr>
+							<td><strong>Education:</strong></td>
+							<td>{{person.education}}</td>
+						</tr>
+						<tr>
+							<td><strong>Nationality:</strong></td>
+							<td>{{person.nationality}}</td>
+						</tr>
+						<tr>
+							<td><strong>Ethnicity:</strong></td>
+							<td>{{person.ethnicity}}</td>
+						</tr>
+						<tr>
+							<td><strong>Religion:</strong></td>
+							<td>{{person.religion}}</td>
+						</tr>
+						<tr>
+							<td><strong>Languages:</strong></td>
+							<td>{{person.language}}</td>
+						</tr>
+						<tr>
+							<td><strong> Marital Status:</strong></td>
+							<td>{{person.marital_status}}</td>
+						</tr>
+
+						<tr>
+							<td><strong> Profile Views:</strong></td>
+							<td>{{person.views}}</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+
+		<div class="col-lg-4 ">
+			<div class="panel-heading">
+				<h1 class="panel-title ">
+					<b>
+						<p class="text-center">Username : {{person.username}}</p>
+					</b>
+				</h1>
+			</div>
+				<div class="panel-body">
+				<p>
+					<strong>Height: </strong>{{person.height}}
+				</p>
+				<p>
+					<strong>Body Type: </strong>{{person.bodytype}}
+				</p>
+				<p>
+					<strong>Hair color: </strong>{{person.haircolor}}
+				</p>
+				<p>
+					<strong>Eye color: </strong>{{person.eyecolor}}
+				</p>
+				<p>
+					<strong>Smoke: </strong>{{person.smoke}}
+				</p>
+				<p>
+					<strong>Children: </strong>{{person.children}}
+				</p>
+				<p>
+					<strong>Home: </strong>{{person.home}}
+				</p>
+				<p>
+					<strong>Living in: </strong>{{person.city}},{{person.country}}
+				</p>
+				<p>
+					<strong>Read Quran: </strong>{{person.quran}}
+				</p>
+				<p>
+					<strong>Relocation: </strong>{{person.relocate}}
+				</p>
+				<p>
+					<strong>Last login: </strong>{{person.last_login}}
+				</p>
+			</div>
+		</div>
+
+
+
+
+		<!--</div>-->
+
+		<div class="clearfix visible-lg"></div>
+	</div>
+
+
+
+	<!-- More Pics  Panel Begin-->
+	<div class="col-lg-12">
+		<div class="panel panel-default">
+			<div class="panel-heading text-center"><strong>Some more pics!</strong></div>
+			<!-- /.panel-heading -->
+			<div class="panel-body">
+				<!-- Nav tabs -->
+
+				<div class="col-md-12 ">
+
+
+					<div ng-repeat="pic_url in more_pics_url track by $index" class="panel panel-default col-md-3" ng-mouseover="hoverIn()" ng-mouseleave="hoverOut()">
+
+						<div class="innerbox text-center">
+
+
+
+							<sup> <span ng-show="hoverEdit" class="animate-show"> <a> <img ng-src={{pic_url}} err-SRC="http://centralnormal.spdev.co.nz/images/custom/Staff/NoPerson.png">
+								</a>
+							</span>
+							</sup> <img ng-src={{pic_url}} err-SRC="http://centralnormal.spdev.co.nz/images/custom/Staff/NoPerson.png" ng-show="!hoverEdit" style="width: 200px; height: 200px;" alt="gallery thumbnail" />
+
+
+
+
+
+						</div>
+
+					</div>
+				</div>
+
+
+			</div>
+			<!-- /.panel-body -->
+
+
+
+		</div>
+		<!-- /.panel -->
+	</div>
+	<!-- More Pics  Panel End-->
+
+
+
+	<!--More About Panel Begin-->
+	<div class="row col-lg-12">
+		<div class="panel panel-default">
+			<div class="text-center panel-heading">
+				<strong>About Myself</strong>
+			</div>
+			<!-- /.panel-heading -->
+			<div class="panel-body" style="max-height: 600pt; overflow-y: scroll;">
+				<p>{{person.description}}.</p>
+			</div>
+			<!-- /.panel-body -->
+		</div>
+		<!-- /.panel -->
+	</div>
+	<!--More About Panel End -->
+
+
+	<!--Looking for  Panel Begin-->
+	<div class="row col-lg-12">
+		<div class="panel panel-default">
+			<div class="text-center panel-heading">
+				<strong>About My Match</strong>
+			</div>
+			<!-- /.panel-heading -->
+			<div class="panel-body" style="max-height: 600pt; overflow-y: scroll;">
+				<p>{{person.mymatch}}.</p>
+			</div>
+			<!-- /.panel-body -->
+		</div>
+		<!-- /.panel -->
+	</div>
+	<!--Looking for Panel End -->
+	
+	
+	<!-- Send quick msg box start -->
+	<div class=" panel panel-default row col-lg-12">
+
+		<div class="form-group">
+			<div class="text-center">
+				<label><a href="#/LoginPage">Sign up for Free </a>to send {{person.username}} a quick message:</label>
+			</div>
+			<textarea id="messageArea" ng-model="emailContent" class="form-control" rows="4" disabled></textarea>
+			<p></p>
+			<div class="text-center">
+				<a href="#HomePage">
+					<button type="submit" class="btn btn-success" disabled>Send Message</button>
+				</a>
+			</div>
+			<div ng-show="showMessageSent" class="text-center">
+				<strong>Your message has been sent.</strong>
+			</div>
+		</div>
+	</div>
+
+
+	<!-- Send quick msg box end -->
+
+
+
+
+
+	<!--Ad panel - Horizontal start-->
+	<div class="row text-center">
+		<div class="col-md-12">
+
+			<img src="http://s1.2mdn.net/viewad/4157372/Adobe_CCM_DR_Save40EOLPhs1_728x90_img.jpeg" alt="Advertisement" border="0" width="728" height="90">
+		</div>
+	</div>
+	<p></p>
+	<!--Ad panel - Horizontal end-->
+
+</div>
