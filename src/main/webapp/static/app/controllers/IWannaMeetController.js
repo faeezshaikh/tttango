@@ -49,22 +49,22 @@
 		$scope.personFromListSelected = function(profile_id) {
 			localStorage.setItem("personId", profile_id);
 		}
-		
+
 		$scope.getImgUrl = function(main_image) {
 			return getMainImgUrl(main_image);
 		}
-		
+
 		$scope.processDate = function(val) {
 			return handleDate(val);
 		}
-		
+
 		$scope.processOnlineStatus = function(onlineStatus, lastLogin) {
 			var d = new Date(lastLogin);
 			return getOnlineStatus(onlineStatus, d.toLocaleString());
 		}
-		
+
 		$scope.getSize = function() {
-			if($scope.responseSize >= 100) {
+			if ($scope.responseSize >= 100) {
 				return 'More than 100';
 			} else {
 				return $scope.responseSize;

@@ -18,27 +18,26 @@
 		<!-- <button ng-click="tableParams.sorting({})" class="btn btn-default pull-right">Clear sorting</button> -->
 
 		<div ng-hide="isLoading" class="text-center">
-			<label>These are the people who you liked.</label>
+			<label>These are the people who you liked. Total is {{getSize()}}</label>
 		</div>
 		<table ng-hide="isLoading" ng-table="tableParams" class="table table-hover text-center">
-			<tr ng-repeat="person in $data">
-				<td data-title="'Picture'" sortable=""><a href="#PersonDetails" ng-click="personFromListSelected(person.likers_id)"> <img ng-src={{person.likers_pic_url}}
+			<tr ng-repeat="meeter in $data">
+			
+				<td data-title="'Picture'" sortable=""><a href="#PersonDetails" ng-click="personFromListSelected(meeter.profile_id)"> <img ng-src={{getImgUrl(meeter.main_img)}}
 						err-SRC="http://centralnormal.spdev.co.nz/images/custom/Staff/NoPerson.png" style="width: 100px; height: 100px;" /></a></td>
 
-				<td data-title="'Age'" sortable="'likers_age'"><a href="#PersonDetails" ng-click="personFromListSelected(person.likers_id)">{{person.likers_age}} </a></td>
+				<td data-title="'Age'" sortable="'birth'"><a href="#PersonDetails" ng-click="personFromListSelected(meeter.profile_id)">{{processDate(meeter.birth)}} </a></td>
 
-				<td data-title="'Occupation'" sortable="'likers_occupation'"><a href="#PersonDetails" ng-click="personFromListSelected(person.likers_id)">{{person.likers_occupation}} </a></td>
+				<td data-title="'Occupation'" sortable="'occupation'"><a href="#PersonDetails" ng-click="personFromListSelected(meeter.profile_id)">{{meeter.occupation}} </a></td>
 
-				<td data-title="'City'" sortable="'likers_city'"><a href="#PersonDetails" ng-click="personFromListSelected(person.likers_id)">{{person.likers_city}} </a></td>
+				<td data-title="'City'" sortable="'city'"><a href="#PersonDetails" ng-click="personFromListSelected(meeter.profile_id)">{{meeter.city}} </a></td>
 
-				<td data-title="'Likes'" sortable="'likers_likes'"><a href="#PersonDetails" ng-click="personFromListSelected(person.likers_id)">{{person.likers_likes}} </a></td>
+				<td data-title="'Country'" sortable="'country'"><a href="#PersonDetails" ng-click="personFromListSelected(meeter.profile_id)">{{meeter.country}} </a></td>
+				<td data-title="'Likes'" sortable="'likes'"><a href="#PersonDetails" ng-click="personFromListSelected(meeter.profile_id)">{{meeter.likes}} </a></td>
 
-<!-- 				<td data-title="'Views'" sortable="'likers_views'"><a href="#PersonDetails" ng-click="personFromListSelected(person.likers_id)"> {{person.likers_views}}</a></td>
-				<td data-title="'Meet Requests'" sortable="'likers_meetReqs'"><a href="#PersonDetails" ng-click="personFromListSelected(person.likers_id)"> {{person.likers_meetReqs}}</a></td> -->
+				<td data-title="'You Requested When'" sortable="'meet_req_when'"><a href="#PersonDetails" ng-click="personFromListSelected(meeter.profile_id)"> {{ processDate(meeter.meet_req_when)}}</a></td>
 
-				<td data-title="'Liked When'" sortable="'like_time'"><a href="#PersonDetails" ng-click="personFromListSelected(person.likers_id)"> {{pretty(person.like_time)}}</a></td>
-
-				<td data-title="'Online'" sortable="'likers_onlineStatus'"><a href="#PersonDetails" ng-click="personFromListSelected(person.likers_id)"> {{person.likers_onlineStatus}}</a></td>
+				<td data-title="'Last Online'" sortable="'last_login'"><a href="#PersonDetails" ng-click="personFromListSelected(meeter.profile_id)"> {{processOnlineStatus(meeter.online_status,meeter.last_login)}}</a></td>
 			</tr>
 		</table>
 		<div class="text-center" ng-hide="areResultsPresent()">

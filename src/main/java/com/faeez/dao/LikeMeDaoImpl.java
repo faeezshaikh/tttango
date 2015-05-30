@@ -11,6 +11,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
 
 import com.faeez.model.LikeMe;
+import com.faeez.model.MeetRequester;
 
 @Repository
 public class LikeMeDaoImpl implements LikeMeDao {
@@ -24,24 +25,27 @@ public class LikeMeDaoImpl implements LikeMeDao {
 	}
 
 	@Override
-	public List<LikeMe> getProfilesWhoLikedMe(Long profile_id) {
+	public List<MeetRequester> getProfilesWhoLikedMe(Long profile_id) {
 		Session session = this.sessionFactory.getCurrentSession();
-		@SuppressWarnings("unchecked")
-		List<LikeMe> likeList = session.createQuery("from LikeMe where liked_who = " + profile_id).list();
-		logger.debug("Successfully retrieved " + likeList.size() + " likes for :"+profile_id);
-		return likeList;
+		org.hibernate.Query query = session.createQuery("select new com.faeez.model.MeetRequester(a.id,a.main_img,a.likes,a.views,a.meet_requests,a.username,a.online_status,a.birth,a.occupation,a.city,a.last_login, a.country, b.liked_when) from Member a, LikeMe b where a.id = b.liked_by and b.liked_who = :likedwho");
+		query.setParameter("likedwho", profile_id);
+		query.setMaxResults(100);
+		List<MeetRequester> meetList = query.list();
+		logger.info("Successfully retrieved " + meetList.size() + " likes by for : " + profile_id);
+		return meetList;
 	}
 
 
 	@Override
-	public List<LikeMe> getProfilesWhoILiked(Long profile_id) {
+	public List<MeetRequester> getProfilesWhoILiked(Long profile_id) {
 		Session session = this.sessionFactory.getCurrentSession();
-		@SuppressWarnings("unchecked")
-		List<LikeMe> likeList = session.createQuery("from LikeMe where liked_by = " + profile_id).list();
-		logger.debug("Successfully retrieved " + likeList.size() + " likes by :"+profile_id);
-		return likeList;
+		org.hibernate.Query query = session.createQuery("select new com.faeez.model.MeetRequester(a.id,a.main_img,a.likes,a.views,a.meet_requests,a.username,a.online_status,a.birth,a.occupation,a.city,a.last_login, a.country, b.liked_when) from Member a, LikeMe b where a.id = b.liked_who and b.liked_by = :likedby");
+		query.setParameter("likedby", profile_id);
+		query.setMaxResults(100);
+		List<MeetRequester> meetList = query.list();
+		logger.info("Successfully retrieved " + meetList.size() + " likes by for : " + profile_id);
+		return meetList;
 	}
-
 
 	@Override
 	public void addLikeMe(LikeMe likeMe) {

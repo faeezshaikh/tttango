@@ -117,7 +117,6 @@
 
 	<beans:bean id="likeMeService" class="com.faeez.service.LikeMeServiceImpl">
 		<beans:property name="likeMeDao" ref="likeMeDao"></beans:property>
-		<beans:property name="memberDao" ref="memberDao"></beans:property>
 	</beans:bean>
 
 	<beans:bean id="meetMeDao" class="com.faeez.dao.MeetMeDaoImpl">

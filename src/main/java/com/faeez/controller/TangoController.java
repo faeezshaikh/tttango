@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.faeez.model.Contact;
+import com.faeez.model.MeetRequester;
 import com.faeez.model.Member;
 import com.faeez.model.ProfileView;
 import com.faeez.service.AwsService;
@@ -333,12 +334,12 @@ public class TangoController {
 
 	//// [Like Mes Start ]  ////
 	@RequestMapping(value = "/getWhoLikedMe/{profile_id}", method = RequestMethod.GET)
-	public List<Liker> getWhoLikedMe(@PathVariable Long profile_id) {
+	public List<MeetRequester> getWhoLikedMe(@PathVariable Long profile_id) {
 		return likeMeService.getProfilesWhoLikedMe(profile_id);
 	}
 
 	@RequestMapping(value = "/getWhoILiked/{profile_id}", method = RequestMethod.GET)
-	public List<Liker> getWhoILiked(@PathVariable Long profile_id) {
+	public List<MeetRequester> getWhoILiked(@PathVariable Long profile_id) {
 		return likeMeService.getProfilesWhoILiked(profile_id);
 	}
 	
