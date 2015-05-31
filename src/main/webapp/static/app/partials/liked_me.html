@@ -22,7 +22,7 @@
 				<strong>These are the people who liked your profile. Total is {{getSize()}}</strong>
 			</div>
 			<div class="panel-body">
-				<table ng-hide="isLoading" ng-table="tableParams" class="table">
+				<table ng-hide="isLoading" ng-table="tableParams" class="table table-hover">
 					<tr ng-repeat="meeter in $data">
 
 						<td data-title="'Picture'" sortable=""><a href="#PersonDetails" ng-click="personFromListSelected(meeter.profile_id)"> <img ng-src={{getImgUrl(meeter.main_img)}}

@@ -223,7 +223,6 @@
 		}
 		
 		$scope.isConversationNew = function(email) {
-			alert(email.is_conversation_new == 'y' && email.new_email_for == $scope.auth.profile.identities[0].user_id);
 			return (email.is_conversation_new == 'y' && email.new_email_for == $scope.auth.profile.identities[0].user_id); 
 		}
 		

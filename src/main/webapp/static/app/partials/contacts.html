@@ -10,41 +10,32 @@
 
 	<div ng-controller="ContactsController" ng-init="init()" class="col-lg-8">
 		<p></p>
-		<div ng-show="isLoading">
-			Finding all your contacts. Please wait...
+		<div class="text-center" ng-show="isLoading">
 			<p></p>
 			<img ng-src="https://i1.wp.com/cdnjs.cloudflare.com/ajax/libs/galleriffic/2.0.1/css/loader.gif">
 		</div>
 
 
-		<!-- <div class="panel panel-primary" ng-repeat="contact in contactList">
-			<a href="#PersonDetails" ng-click="personFromListSelected(contact)"> <img ng-src={{getImgUrl(contact)}} err-SRC="http://centralnormal.spdev.co.nz/images/custom/Staff/NoPerson.png"
-				style="width: 200px; height: 200px;" />
-			</a>
-		</div> -->
 
-
-
-		<div class="row col-lg-12">
+		<div ng-show="!isLoading" class="row col-lg-12">
 			<div class="panel panel-default">
 				<div class="panel-heading text-center">
-					<strong>Your Contacts. </strong>
-							<input type="text" ng-model="searchFor" class="form-control"
-								placeholder="Search Contacts" name="srch-term" id="srch-term">
+					<strong>Your Contacts. </strong> <input type="text" ng-model="searchFor" class="form-control" placeholder="Search Contacts" name="srch-term" id="srch-term">
 				</div>
 				<div class="panel-body">
 
 
 					<div class="col-md-12 ">
 
-						<div ng-repeat="contact in contactList | filter:searchFor" class="panel panel-default col-md-3">
+						<div ng-repeat="contact in contactList | filter:searchFor | reverse" class="panel panel-default col-md-3">
 
 							<div class="panel-heading">
 								<!-- <strong class="panel-title">{{contact.contact_username}}</strong>  -->
-								
-								<label><span >{{contact.contact_username | limitTo: 8}}</span> </label>
+
+								<label><span>{{contact.contact_username | limitTo: 8}}</span> </label>
 								<div style="float: right; width: 20px; height: 20px;" class="pull-right">
-									<img class="trashDiv" ng-click="deleteContact(contact.contact_id)" src="https://s3-us-west-2.amazonaws.com/mbuds/ClosedTrash.png" onmouseover="this.src='https://s3-us-west-2.amazonaws.com/mbuds/OpenTrash.png'" onmouseout="this.src='https://s3-us-west-2.amazonaws.com/mbuds/ClosedTrash.png'" />
+									<img class="trashDiv" ng-click="deleteContact(contact.contact_id)" src="https://s3-us-west-2.amazonaws.com/mbuds/ClosedTrash.png"
+										onmouseover="this.src='https://s3-us-west-2.amazonaws.com/mbuds/OpenTrash.png'" onmouseout="this.src='https://s3-us-west-2.amazonaws.com/mbuds/ClosedTrash.png'" />
 								</div>
 
 

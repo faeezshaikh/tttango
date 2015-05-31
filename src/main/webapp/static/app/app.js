@@ -299,11 +299,6 @@ spaApp.factory('Utils', function($q) {
 	};
 });
 
-spaApp.controller('RegisterController', function($scope) {
-
-	$scope.message = 'This is Home Page screen';
-
-});
 
 // this is for default img if original img not found
 spaApp.directive('errSrc', function() {
@@ -317,3 +312,10 @@ spaApp.directive('errSrc', function() {
 		}
 	}
 });
+
+//Custom filter to reverse order of contacts in contacts page. We want the last contact added to appear on top.
+spaApp.filter('reverse', function() {
+	  return function(items) {
+	    return items.slice().reverse();
+	  };
+	});

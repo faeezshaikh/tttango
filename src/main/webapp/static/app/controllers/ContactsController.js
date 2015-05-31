@@ -40,8 +40,7 @@
 		}
 
 		$scope.deleteContact = function(contactId) {
-//			alert('profile : ' + $scope.auth.profile.identities[0].user_id + ' contact:' + contactId);
-			
+			console.log(contactId);
 			 var deleteContact= $window.confirm('Are you sure you want to delete this contact?');
       	     if (deleteContact) {
 	      	    	 
