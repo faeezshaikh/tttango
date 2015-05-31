@@ -25,7 +25,7 @@
 					page : 1, // show first page
 					count : 10, // count per page
 					sorting : {
-						meet_time : 'desc' // initial sorting
+						meet_req_when : 'desc' // initial sorting
 					}
 				}, {
 					total : resp.length, // length of data

@@ -2,6 +2,11 @@ package com.faeez.model;
 
 import java.util.Date;
 
+/*this is the projection class, used to populate data for:
+1. Viewed me
+2. Liked Me & I Liked
+3. Wanna meet me & I wanna meet*/
+
 public class MeetRequester {
 
 	private Long profile_id;

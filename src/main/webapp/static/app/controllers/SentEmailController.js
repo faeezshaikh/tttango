@@ -6,7 +6,7 @@ spaApp.controller('SentEmailController', function($scope, $http, ngTableParams, 
 	  
 	  var email = userService.getEmail();
 	  
-		var url = REST_BASE + 'getEmailByEmailId/' + email.emailId;
+		var url = REST_BASE + 'getEmailByEmailId/' + email.id;
 		$http.get(url).
 			success(function(data) {
 			  $scope.sentEmail = data;
@@ -17,6 +17,14 @@ spaApp.controller('SentEmailController', function($scope, $http, ngTableParams, 
 		localStorage.setItem("personId",  receivers_profile_id);
 	}
 	
+  $scope.getImgUrl = function(main_image) {
+		return getMainImgUrl(main_image);
+	}
+  
+  $scope.processDateForEmailPage = function(val) {
+		var d = new Date(val);
+		return d.toLocaleString()
+	}
 
  
 });

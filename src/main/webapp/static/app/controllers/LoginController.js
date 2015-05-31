@@ -6,6 +6,7 @@
 		$scope.requestForgotFlag = false;
 		$scope.forgotMessagePass = "";
 		$scope.forgotMessageFail = "";
+		$scope.forgotMessageInProgress = false;
 		
 		
 
@@ -33,11 +34,13 @@
 		}
 		
 		$scope.forgotLoginSubmitted = function() {
+			$scope.forgotMessageInProgress = true;
 			var url = REST_BASE + 'forgot?email=' + $scope.forgotEmail;
 			$http.get(url, {
 				cache : true
 			}).success(function(data) {
 				$scope.forgotEmail = "";
+				$scope.forgotMessageInProgress = false;
 				if(data) {
 					// success
 					$scope.forgotMessagePass = "Success! Login information has been sent to the registered email address."

@@ -253,15 +253,18 @@
 
 				<table ng-table="tableParams" class="table table-hover text-center">
 					<tr ng-repeat="email in $data">
-						<td data-title="'Picture'" sortable="" ng-class="{'unread': email.is_conversation_new == 'y'}"><a href="#EmailPage" ng-click="openEmailFromInbox(email)"><img
-								style="width: 150px; height: 150px;" ng-src={{email.senders_pic_url}} err-SRC="http://centralnormal.spdev.co.nz/images/custom/Staff/NoPerson.png" /></a></td>
+						
+						<td data-title="'Picture'" sortable="" ng-class="{'unread': isConversationNew(email)}"><a href="#EmailPage" ng-click="openEmailFromInbox(email)"><img
+								style="width: 150px; height: 150px;" ng-src={{getImgUrl(email.sender_main_img)}} err-SRC="http://centralnormal.spdev.co.nz/images/custom/Staff/NoPerson.png" /></a></td>
 
-						<td data-title="'Message'" sortable="'message'" ng-class="{'unread': email.is_conversation_new == 'y'}"><a href="#EmailPage" ng-click="openEmailFromInbox(email)"> {{email.message |
-								limitTo: 20}} {{email.message.length < 20 ? '' : '...'}} </a></td>
-						<td data-title="'Time'" sortable="'email_time_millis'" ng-class="{'unread': email.is_conversation_new == 'y'}"><a href="#EmailPage" ng-click="openEmailFromInbox(email)">
-								{{pretty(email.email_time_millis)}} </a></td>
+						<td data-title="'Message'" sortable="'message'" ng-class="{'unread': isConversationNew(email)}"><a href="#EmailPage" ng-click="openEmailFromInbox(email)"> {{email.message |
+								limitTo: 20}} {{email.message.length < 25 ? '' : '...'}} </a></td>
+						
+						
+						<td data-title="'Time'" sortable="'email_time_millis'" ng-class="{'unread': isConversationNew(email)}"><a href="#EmailPage" ng-click="openEmailFromInbox(email)">
+								{{processDate(email.new_conversation_time)}}
+								</a></td>
 
-						<td data-title="'Online'" sortable="'status'" ng-class="{'unread': email.is_conversation_new == 'y'}">Yes</td>
 					</tr>
 				</table>
 				

@@ -152,7 +152,7 @@
 					page : 1, // show first page
 					count : 10, // count per page
 					sorting : {
-						email_time_millis : 'desc' // initial sorting
+						new_conversation_time : 'desc' // initial sorting
 					}
 				}, {
 					total : resp.length, // length of data
@@ -214,8 +214,18 @@
 		jQuery("#searchBar").autocomplete("option", "delay", 100);*/
 		
 		
+		$scope.getImgUrl = function(main_image) {
+			return getMainImgUrl(main_image);
+		}
+
+		$scope.processDate = function(val) {
+			return handleDate(val);
+		}
 		
-		
+		$scope.isConversationNew = function(email) {
+			alert(email.is_conversation_new == 'y' && email.new_email_for == $scope.auth.profile.identities[0].user_id);
+			return (email.is_conversation_new == 'y' && email.new_email_for == $scope.auth.profile.identities[0].user_id); 
+		}
 		
 
 	});

@@ -12,14 +12,19 @@
 		<div class="row">
 
 			<div class="col-md-12">
-				<div class="panel panel-default" ng-repeat="email in emailConversations | orderBy: 'email_time_millis' ">
+
+				<div class="text-center" ng-show="isLoading">
+					<p></p>
+					<img ng-src="https://i1.wp.com/cdnjs.cloudflare.com/ajax/libs/galleriffic/2.0.1/css/loader.gif">
+				</div>
+
+				<div class="panel panel-default" ng-repeat="email in emailConversations | orderBy: 'email_time' ">
 					<div class="panel-body">
 
 						<div>
-							<a href="#PersonDetails" ng-click="picInsideEmailClicked(email.senders_profile_id)"> 
-								<img style="width: 50px; height: 50px;" id="image-4" ng-src={{email.senders_pic_url}}
+							<a href="#PersonDetails" ng-click="picInsideEmailClicked(email.sender_id)"> <img style="width: 50px; height: 50px;" id="image-4" ng-src={{getImgUrl(email.sender_main_img)}}
 								err-SRC="http://centralnormal.spdev.co.nz/images/custom/Staff/NoPerson.png" alt="">
-							</a> <small>{{email.email_time_millis}}</small>
+							</a> <small>{{processDateForEmailPage(email.email_time)}}</small>
 
 							<blockquote>
 								<p>
@@ -34,7 +39,7 @@
 
 
 				<!-- Send quick msg box start -->
-				<div class=" panel panel-default">
+				<div ng-show="!isLoading" class=" panel panel-default">
 
 					<div class="form-group">
 						<div class="text-center">

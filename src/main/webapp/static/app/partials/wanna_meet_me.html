@@ -10,36 +10,47 @@
 
 	<div ng-controller="MeetMeController" ng-init="init()" class="col-lg-8">
 		<p></p>
-		<div ng-show="isLoading">
-			Finding all the nice ppl who would love to meet you. Please wait...
+		<div class="text-center" ng-show="isLoading">
 			<p></p>
 			<img ng-src="https://i1.wp.com/cdnjs.cloudflare.com/ajax/libs/galleriffic/2.0.1/css/loader.gif">
 		</div>
 
-		<div ng-hide="isLoading" class="text-center">
-			<label>These are the people who would love to meet you.</label>
+
+		<div ng-hide="isLoading" class="panel panel-default">
+			<div class="panel-heading text-center">
+				<strong>These are the people who would love to meet you.</strong>
+			</div>
+			<div class="panel-body">
+
+				<table ng-table="tableParams" class="table" ng-hide="isLoading">
+					<tr ng-repeat="meeter in $data">
+
+						<td data-title="'Picture'" sortable=""><a href="#PersonDetails" ng-click="personFromListSelected(meeter.profile_id)"> <img ng-src={{getImgUrl(meeter.main_img)}}
+								err-SRC="http://centralnormal.spdev.co.nz/images/custom/Staff/NoPerson.png" style="width: 100px; height: 100px;" /></a></td>
+
+						<td data-title="'Age'" sortable="'birth'"><a href="#PersonDetails" ng-click="personFromListSelected(meeter.profile_id)">{{processDate(meeter.birth)}} </a></td>
+
+						<td data-title="'Occupation'" sortable="'occupation'"><a href="#PersonDetails" ng-click="personFromListSelected(meeter.profile_id)">{{meeter.occupation}} </a></td>
+
+						<td data-title="'City'" sortable="'city'"><a href="#PersonDetails" ng-click="personFromListSelected(meeter.profile_id)">{{meeter.city}} </a></td>
+
+						<td data-title="'Country'" sortable="'country'"><a href="#PersonDetails" ng-click="personFromListSelected(meeter.profile_id)">{{meeter.country}} </a></td>
+						<td data-title="'Likes'" sortable="'likes'"><a href="#PersonDetails" ng-click="personFromListSelected(meeter.profile_id)">{{meeter.likes}} </a></td>
+
+						<td data-title="'Requested When'" sortable="'meet_req_when'"><a href="#PersonDetails" ng-click="personFromListSelected(meeter.profile_id)"> {{ processDate(meeter.meet_req_when)}}</a></td>
+
+						<td data-title="'Last Online'" sortable="'last_login'"><a href="#PersonDetails" ng-click="personFromListSelected(meeter.profile_id)">
+								{{processOnlineStatus(meeter.online_status,meeter.last_login)}}</a></td>
+					</tr>
+				</table>
+			</div>
 		</div>
 
-		<table ng-table="tableParams" class="table" ng-hide="isLoading">
-			<tr ng-repeat="meeter in $data">
-				
-				<td data-title="'Picture'" sortable=""><a href="#PersonDetails" ng-click="personFromListSelected(meeter.profile_id)"> <img ng-src={{getImgUrl(meeter.main_img)}}
-						err-SRC="http://centralnormal.spdev.co.nz/images/custom/Staff/NoPerson.png" style="width: 100px; height: 100px;" /></a></td>
 
-				<td data-title="'Age'" sortable="'birth'"><a href="#PersonDetails" ng-click="personFromListSelected(meeter.profile_id)">{{processDate(meeter.birth)}} </a></td>
 
-				<td data-title="'Occupation'" sortable="'occupation'"><a href="#PersonDetails" ng-click="personFromListSelected(meeter.profile_id)">{{meeter.occupation}} </a></td>
 
-				<td data-title="'City'" sortable="'city'"><a href="#PersonDetails" ng-click="personFromListSelected(meeter.profile_id)">{{meeter.city}} </a></td>
 
-				<td data-title="'Country'" sortable="'country'"><a href="#PersonDetails" ng-click="personFromListSelected(meeter.profile_id)">{{meeter.country}} </a></td>
-				<td data-title="'Likes'" sortable="'likes'"><a href="#PersonDetails" ng-click="personFromListSelected(meeter.profile_id)">{{meeter.likes}} </a></td>
 
-				<td data-title="'Requested When'" sortable="'meet_req_when'"><a href="#PersonDetails" ng-click="personFromListSelected(meeter.profile_id)"> {{ processDate(meeter.meet_req_when)}}</a></td>
-
-				<td data-title="'Last Online'" sortable="'last_login'"><a href="#PersonDetails" ng-click="personFromListSelected(meeter.profile_id)"> {{processOnlineStatus(meeter.online_status,meeter.last_login)}}</a></td>
-			</tr>
-		</table>
 		<div class="text-center" ng-hide="areResultsPresent()">
 			<mark>None so far.</mark>
 		</div>

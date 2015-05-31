@@ -19,7 +19,6 @@ import org.springframework.web.multipart.MultipartFile;
 import com.faeez.model.Contact;
 import com.faeez.model.MeetRequester;
 import com.faeez.model.Member;
-import com.faeez.model.ProfileView;
 import com.faeez.service.AwsService;
 import com.faeez.service.EmailService;
 import com.faeez.service.LikeMeService;
@@ -27,8 +26,6 @@ import com.faeez.service.MeetMeService;
 import com.faeez.service.MemberService;
 import com.faeez.service.ProfileViewService;
 import com.faeez.ui.model.Email;
-import com.faeez.ui.model.Liker;
-import com.faeez.ui.model.ProfileViewer;
 import com.faeez.ui.model.Search;
 import com.faeez.ui.model.SignupResponse;
 import com.faeez.ui.model.UiMember;
@@ -113,6 +110,7 @@ public class TangoController {
 		// Original was aws manipulation. Changed: added column to table.
 //		awsService.makeImageMain(profile_id, fileName);
 		memberService.makeImageMain(profile_id, fileName);
+		emailService.updateMainImage(profile_id, fileName);
 	}
 	
 	
@@ -277,7 +275,7 @@ public class TangoController {
 
 	// 2. Gets all emails grouped by sender. For Inbox
 	@RequestMapping(value = "/getInbox/{profile_id}", method = RequestMethod.GET)
-	public List<Email> getAllEmailsSentToMe(@PathVariable Long profile_id) {
+	public List<com.faeez.model.Email> getAllEmailsSentToMe(@PathVariable Long profile_id) {
 		memberService.setOnlineStatus(profile_id,"on");
 		return emailService.retrieveEmailsSentToMe(profile_id);
 	}
@@ -285,7 +283,7 @@ public class TangoController {
 	// 3. When an email on inbox is clicked. Gets all conversations between that sender and receiver
 	// Also marks conversation as read.
 	@RequestMapping(value = "/getEmailConversations", method = RequestMethod.GET)
-	public List<Email> getEmailConversations(@RequestParam(value = "sender_id", required = false) Long sender_id, @RequestParam(value = "receiver_id", required = false) Long receiver_id) {
+	public List<com.faeez.model.Email> getEmailConversations(@RequestParam(value = "sender_id", required = false) Long sender_id, @RequestParam(value = "receiver_id", required = false) Long receiver_id) {
 		return emailService.getEmailConversations(sender_id, receiver_id);
 	}
 	
@@ -298,13 +296,13 @@ public class TangoController {
 
 	
 	@RequestMapping(value = "/getSentItems/{profile_id}", method = RequestMethod.GET)
-	public List<Email> getAllEmailsSentByMe(@PathVariable Long profile_id) {
+	public List<com.faeez.model.Email> getAllEmailsSentByMe(@PathVariable Long profile_id) {
 		return emailService.retrieveEmailsSentByMe(profile_id);
 	}
 	
 	
 	@RequestMapping(value = "/getEmailByEmailId/{email_id}", method = RequestMethod.GET)
-	public Email getEmailByEmailId(@PathVariable Long email_id) {
+	public com.faeez.model.Email getEmailByEmailId(@PathVariable Long email_id) {
 		return emailService.getEmailById(email_id);
 	}
 

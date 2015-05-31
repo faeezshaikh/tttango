@@ -38,6 +38,8 @@ public class Email {
 	
 	private Date new_conversation_time;
 	private Long new_email_for;
+	private String receiver_main_img;
+	private String sender_main_img;
 	
 	
 	
@@ -52,6 +54,22 @@ public class Email {
 
 	public Date getNew_conversation_time() {
 		return new_conversation_time;
+	}
+
+	public String getReceiver_main_img() {
+		return receiver_main_img;
+	}
+
+	public void setReceiver_main_img(String receiver_main_img) {
+		this.receiver_main_img = receiver_main_img;
+	}
+
+	public String getSender_main_img() {
+		return sender_main_img;
+	}
+
+	public void setSender_main_img(String sender_main_img) {
+		this.sender_main_img = sender_main_img;
 	}
 
 	public void setNew_conversation_time(Date new_conversation_time) {

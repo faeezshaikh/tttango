@@ -23,8 +23,7 @@
 	<div  ng-controller="EmailController" ng-init="getSentItems()" class="col-lg-8">
 		
 		<p></p>
-		<div ng-show="isLoading">
-			Loading your sent items. Please wait...
+		<div class="text-center" ng-show="isLoading">
 			<p></p>
 			<img ng-src="https://i1.wp.com/cdnjs.cloudflare.com/ajax/libs/galleriffic/2.0.1/css/loader.gif">
 		</div>
@@ -35,6 +34,7 @@
 			<div class="panel-heading text-center">
 				<strong>Your sent items</strong>
 			</div>
+			
 			<div class="text-center" ng-hide="!$data.length">
 				<p></p>
 				You have no sent items
@@ -45,13 +45,12 @@
 
 				<table ng-table="tableParams" class="table table-hover text-center">
 					<tr ng-repeat="email in $data">
-						<td data-title="'Picture'" sortable=""><a href="#SentEmailPage" ng-click="openSentItem(email)"><img style="width: 150px; height: 150px;" ng-src={{email.receivers_pic_url}}
+						<td data-title="'Picture'" sortable=""><a href="#SentEmailPage" ng-click="openSentItem(email)"><img style="width: 150px; height: 150px;" ng-src={{getImgUrl(email.receiver_main_img)}}
 								err-SRC="http://centralnormal.spdev.co.nz/images/custom/Staff/NoPerson.png" /></a></td>
 
 						<td data-title="'Message'" sortable="'message'"><a href="#SentEmailPage" ng-click="openSentItem(email)"> {{email.message | limitTo: 20}} {{email.message.length < 20 ? '' : '...'}} </a></td>
-						<td data-title="'Time you sent'" sortable="'email_time_millis'"><a href="#SentEmailPage" ng-click="openSentItem(email)"> {{email.email_time_millis}} </a></td>
-						<td data-title="'Have they read (Refresh)'" sortable="'has_receiver_opened'"><a href="#SentEmailPage" ng-click="openSentItem(email)"> {{email.has_receiver_opened}} </a></td>
-						<td data-title="'Online'" sortable="'status'">Yes</td>
+						<td data-title="'Time you sent'" sortable="'email_time'"><a href="#SentEmailPage" ng-click="openSentItem(email)"> {{processDate(email.email_time)}} </a></td>
+						<td data-title="'Have they read (Refresh)'" sortable="'has_receiver_opened'"><a href="#SentEmailPage" ng-click="openSentItem(email)"> {{email.is_opened}} </a></td>
 					</tr>
 
 				</table>

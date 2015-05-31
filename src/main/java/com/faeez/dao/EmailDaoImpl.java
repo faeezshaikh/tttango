@@ -69,6 +69,34 @@ public class EmailDaoImpl implements EmailDao {
 	 * select * from EMAILS where receiver_id = 65510 group by(sender_id) order by email_time ;
 	 * Note: No order by clause since ordering will happen in datatable.
 	 */
+	
+	
+	
+	
+	
+	/**
+	 * 
+	select t1.receiver_img, t2.receiver_id, t2.sender_id, t2.sender_img, t2.msg, t2.emailId, t2.emailTime, t2.isOpened, t2.isConvNew,
+t2.newConvTime, t2.newEmailFor
+
+  from  (
+
+(select MUSLIMS.main_img as receiver_img 
+from MUSLIMS, EMAILS 
+where EMAILS.receiver_id = '14447434' and MUSLIMS.profile_id = EMAILS.receiver_id 
+ ) as t1
+join
+
+(select MUSLIMS.main_img as sender_img ,EMAILS.message as msg ,EMAILS.receiver_id as receiver_id, EMAILS.sender_id as sender_id,
+		EMAILS.email_id as emailId, EMAILS.email_time as emailTime, EMAILS.is_opened as isOpened, 
+        EMAILS.is_conversation_new as isConvNew, EMAILS.new_conversation_time as newConvTime, EMAILS.new_email_for as newEmailFor
+from MUSLIMS, EMAILS 
+ where EMAILS.receiver_id = '14447434' and MUSLIMS.profile_id = EMAILS.sender_id 
+ ) as t2
+
+) group by t2.sender_img order by t2.newConvTime desc;
+
+	 */
 
 	@Override
 	public List<Email> retrieveEmailsSentToMe(Long profile_id) {
@@ -149,6 +177,25 @@ public class EmailDaoImpl implements EmailDao {
 		query.setParameter("senders_id", sender_id);
 		int result = query.executeUpdate();
 		logger.debug("Successfully marked email as read ");
+		return;
+	}
+
+
+
+	@Override
+	public void updateMainImage(Long profile_id, String fileName) {
+		Session session = this.sessionFactory.getCurrentSession();
+		org.hibernate.Query query = session.createQuery("update Email set receiver_main_img = :fileName where receiver_id = :receiverId" );
+		query.setParameter("fileName", fileName);
+		query.setParameter("receiverId", profile_id);
+		query.executeUpdate();
+		
+		org.hibernate.Query query2 = session.createQuery("update Email set sender_main_img = :fileName where sender_id = :senderId" );
+		query2.setParameter("fileName", fileName);
+		query2.setParameter("senderId", profile_id);
+		query2.executeUpdate();
+		
+		logger.debug("Successfully updated main image in EMAILS table for " + profile_id);
 		return;
 	}
 

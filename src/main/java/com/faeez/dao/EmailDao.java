@@ -14,4 +14,5 @@ public interface EmailDao {
 	List<Email> retrieveEmailConversations(Long sender_id, Long receiver_id);
 	void markEmailAsRead(Long sender_id, Long receiver_id);
 	void markConversationsTimeAndNewRecepient(Long sender_id, Long receiver_id);
+	public void updateMainImage(Long profile_id, String fileName);
 }

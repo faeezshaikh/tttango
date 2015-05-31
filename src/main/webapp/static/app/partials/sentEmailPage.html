@@ -19,19 +19,19 @@
 
 			<div class="col-lg-2">
 				<a href="#PersonDetails"
-					ng-click="picInsideSentEmailClicked(sentEmail.receivers_profile_id)">
+					ng-click="picInsideSentEmailClicked(sentEmail.receiver_id)">
 					<img style="width: 150px; height: 150px;" id="image-4"
-					ng-src={{sentEmail.receivers_pic_url}} 
+					ng-src= {{getImgUrl(sentEmail.receiver_main_img)}}
 					err-SRC="http://centralnormal.spdev.co.nz/images/custom/Staff/NoPerson.png"alt="">
 				</a>
 			</div>
 
 
-			<div class="col-md-9">
+			<div class="col-lg-10">
 				<div class="panel panel-default">
 					<div class="panel-body">
 						<div>
-							<small>{{sentEmail.email_time_millis}}</small>
+							<small>{{processDateForEmailPage(sentEmail.email_time)}}</small>
 
 							<blockquote>
 								<p>{{sentEmail.message}}</p>

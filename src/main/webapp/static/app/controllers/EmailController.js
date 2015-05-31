@@ -8,6 +8,7 @@ spaApp.controller('EmailController', function($scope, $http, ngTableParams, $fil
   $scope.senders_pic_url = "";
   $scope.emailid = 	"";
   $scope.other_persons_id = "";
+  var loggedInUser = {} ;
   
   
   $scope.areResultsPresent = function() {
@@ -26,13 +27,14 @@ spaApp.controller('EmailController', function($scope, $http, ngTableParams, $fil
   // this function is called when the "email.html" loads. "email.html" is the page that opens when an email in inbox is clicked.
   $scope.init = function() {
 	
-	$scope.senders_pic_url = userService.getEmail().senders_pic_url;
-	$scope.senders_id = userService.getEmail().senders_profile_id;
+	/*$scope.senders_pic_url = userService.getEmail().senders_pic_url;
+	$scope.senders_id = userService.getEmail().senders_profile_id;*/
 	  
-	var url = REST_BASE + 'getEmailConversations?sender_id=' + userService.getEmail().senders_profile_id + '&receiver_id=' + userService.getEmail().receivers_profile_id;
+	var url = REST_BASE + 'getEmailConversations?sender_id=' + userService.getEmail().sender_id + '&receiver_id=' + userService.getEmail().receiver_id;
 	$http.get(url).
 		success(function(data) {
 		  $scope.emailConversations = data;
+		  $scope.isLoading = false;
 		});
   }
 	
@@ -46,23 +48,27 @@ spaApp.controller('EmailController', function($scope, $http, ngTableParams, $fil
 
   // This is called when message sent from "dating_details.html" page or from the "email.html" page.
   // "email.html" calls this will null person id.
+  // In both cases, sender is loggedInUser
   $scope.sendMessage = function(random_persons_id) {
 	
 	  var other_person_id;
 	  if(random_persons_id == null) {
-		  // that means it came from email page.. recepient is replying to the sender.
-		  other_person_id = userService.getEmail().senders_profile_id; // ????
+		  // that means it came from email page.. recepient is replying to the sender. // this CANNOT be localStorage.personId
+		  other_person_id = userService.getEmail().sender_id; 
 	  } else {
 		  other_person_id = random_persons_id;
 	  }
 	  
+	  
+	  
+	loggedInUser = JSON.parse(localStorage.getItem("loggedInUser"));
 	
 	
 	var emailObj = {"email_time_millis": "",
 					"message" : $scope.emailContent,
 					"is_conversation_new" : "y",  // value ignored by server. always new on server side
 					"receivers_profile_id": other_person_id,
-					"senders_pic_url" : "",
+					"senders_pic_url" : loggedInUser.main_img,
 					"receivers_pic_url" : "",
 					"has_receiver_opened" : "",
 					"senders_profile_id" :  $scope.auth.profile.identities[0].user_id,
@@ -96,7 +102,7 @@ spaApp.controller('EmailController', function($scope, $http, ngTableParams, $fil
 			page: 1, // show first page
 			count: 10, // count per page
 			sorting: {
-			  email_time_millis: 'desc' // initial sorting
+			  email_time: 'desc' // initial sorting
 			}
 		  }, {
 			total: resp.length, // length of data
@@ -115,7 +121,22 @@ spaApp.controller('EmailController', function($scope, $http, ngTableParams, $fil
 			$scope.serviceErrored = true;
 		});
   }
+  
+  
+	
+	$scope.getImgUrl = function(main_image) {
+		return getMainImgUrl(main_image);
+	}
+
+
+	$scope.processDateForEmailPage = function(val) {
+		var d = new Date(val);
+		return d.toLocaleString()
+	}
  
+	$scope.processDate = function(val) {
+		return handleDate(val);
+	}
 });
 
 })();
