@@ -32,6 +32,8 @@ public class MemberServiceImpl implements MemberService {
 	private MeetMeDao meetMeDao;
 	private LikeMeDao likeMeDao;
 	
+	private String BASE_URL = "http://ec2-52-24-106-16.us-west-2.compute.amazonaws.com:8080/tttango/";
+	
 //	@Autowired
 //	private PicsService picService;
 	
@@ -320,6 +322,7 @@ public class MemberServiceImpl implements MemberService {
 			resp.setStatus(true);
 			
 			String link = "http://localhost:8080/tttango/confirm?username=" + username;
+//			String link = BASE_URL + "confirm?username=" + username;
 			String results = "Thank you for registering. \nYour username: <b>" + username +"</b> and passord: <b>" + password + "</b>. <p></p> Please <a href=\" "+ link+ "\" >click here <a> to confirm your login.";
 			GoogleMail.Send("sarahfaeez", "Password123", email, "Welcome to Two to Tango", results);
 			
@@ -342,6 +345,8 @@ public class MemberServiceImpl implements MemberService {
 			String username = member.getUsername();
 			String password = member.getPassword();
 			String link = "http://localhost:8080/tttango/static/index.html";
+//			String link = BASE_URL + "static/index.html";
+			
 			String message = "You requested login information for your account at <a href=\" "+ link+ "\" >www.tttango.com<a>. Your username is : <b>" + username + "</b> and password is: <b>" + password + "</b>";
 			GoogleMail.Send("sarahfaeez", "Password123", email, "Two to Tango: Your login information", message);
 			

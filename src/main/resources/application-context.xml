@@ -141,8 +141,8 @@
     
     
 	 <beans:bean id="awsCredentials" class="com.amazonaws.auth.BasicAWSCredentials">
-        <beans:constructor-arg value="AKIAJ2JTZQU3OJ65FKGQ"/>
-        <beans:constructor-arg value="gxc8T7NcVR1iNNQGCo3NvPmvwYG3FfyvANl5wiEw"/>
+        <beans:constructor-arg value=""/>
+        <beans:constructor-arg value=""/>
     </beans:bean>
 
 

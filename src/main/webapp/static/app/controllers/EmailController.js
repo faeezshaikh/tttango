@@ -137,6 +137,14 @@ spaApp.controller('EmailController', function($scope, $http, ngTableParams, $fil
 	$scope.processDate = function(val) {
 		return handleDate(val);
 	}
+	
+	$scope.getReadStatus = function(isOpened) {
+		if(isOpened) {
+			if(isOpened == 'y')
+				return "Yes";
+		}
+		return "No";
+	}
 });
 
 })();

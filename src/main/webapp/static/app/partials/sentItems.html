@@ -50,7 +50,7 @@
 
 						<td data-title="'Message'" sortable="'message'"><a href="#SentEmailPage" ng-click="openSentItem(email)"> {{email.message | limitTo: 20}} {{email.message.length < 20 ? '' : '...'}} </a></td>
 						<td data-title="'Time you sent'" sortable="'email_time'"><a href="#SentEmailPage" ng-click="openSentItem(email)"> {{processDate(email.email_time)}} </a></td>
-						<td data-title="'Have they read (Refresh)'" sortable="'has_receiver_opened'"><a href="#SentEmailPage" ng-click="openSentItem(email)"> {{email.is_opened}} </a></td>
+						<td data-title="'Have they read (Refresh)'" sortable="'has_receiver_opened'"><a href="#SentEmailPage" ng-click="openSentItem(email)"> {{getReadStatus(email.is_opened)}} </a></td>
 					</tr>
 
 				</table>
