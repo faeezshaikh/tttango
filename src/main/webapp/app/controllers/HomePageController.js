@@ -135,7 +135,7 @@
 				cache : true
 			}).success(function(data) {
 				userService.setLoggedInUser(data);
-				//localStorage.setItem("loggedInUser", JSON.stringify(data));
+				localStorage.setItem("loggedInUser", JSON.stringify(data));
 			}).error(function(data) {
 				console.log("Error occured while retrieving user profile details -> "  + data) ;
 			});

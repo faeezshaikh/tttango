@@ -52,7 +52,7 @@ public class TangoController {
 	@Autowired
 	private AwsService awsService;
 	
-	private String BASE_URL = "http://ec2-52-24-106-16.us-west-2.compute.amazonaws.com:8080/tttango/";
+	private String BASE_URL = "http://ec2-52-25-250-226.us-west-2.compute.amazonaws.com:8080/tttango/";
 
 	///////// [ Login, SignUp, Forgot from  here ] /////////////
 	@RequestMapping(value = "/signUpNewUser", method = RequestMethod.GET)
@@ -75,8 +75,9 @@ public class TangoController {
 	@RequestMapping(value = "/confirm", method = RequestMethod.GET)
 	public String confirm(@RequestParam(value = "username", required = true) String username)  {
 		try {
-			String homePage = "http://localhost:8080/tttango/static/index.html";
-//			String homePage = BASE_URL + "static/index.html";
+//			String homePage = "http://localhost:8080/tttango/static/index.html";
+			
+			String homePage = BASE_URL + "static/index.html";
 			if(memberService.confirm(username)) {
 				return "Congratulations! You have successfully completed the registration process. Start cruising by signing in on the <a href=\""+ homePage +"\"> home page</a>";
 			}
