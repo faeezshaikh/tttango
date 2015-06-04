@@ -59,7 +59,7 @@
 
 				alert('Main picture successfully updated.');
 //				$route.reload();
-				location.reload(true);
+				//location.reload(true);
 			});
 
 		}
