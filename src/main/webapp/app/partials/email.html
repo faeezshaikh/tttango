@@ -40,20 +40,21 @@
 
 				<!-- Send quick msg box start -->
 				<div ng-show="!isLoading" class=" panel panel-default">
+					<form ng-controller="EmailController" name='submitForm'>
+						<div class="form-group">
+							<div class="text-center">
+								<label>Send {{person.name}} a quick message:</label>
+							</div>
+							<textarea class="form-control" ng-model="emailContent" rows="4" required></textarea>
+							<p></p>
+							<div class="text-center">
+								<a href="#HomePage">
+									<button type="submit" class="btn btn-success" ng-click="sendMessage()" ng-disabled="submitForm.$pristine || submitForm.$invalid">Send Message</button>
+								</a>
+							</div>
 
-					<div class="form-group">
-						<div class="text-center">
-							<label>Send {{person.name}} a quick message:</label>
 						</div>
-						<textarea class="form-control" ng-model="emailContent" rows="4"></textarea>
-						<p></p>
-						<div class="text-center">
-							<a href="#HomePage">
-								<button type="submit" class="btn btn-success" ng-click="sendMessage()">Send Message</button>
-							</a>
-						</div>
-
-					</div>
+					</form>
 				</div>
 
 				<!-- Send quick msg box end -->

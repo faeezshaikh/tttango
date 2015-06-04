@@ -171,14 +171,6 @@
 			$http.get(url_profile_view).success(function(data) {
 			});
 
-			// this for the send message functionality
-			$scope.sendMessage = function() {
-				$scope.message = '';
-				$scope.showMessageSent = true;
-				$timeout(function() {
-					$scope.showMessageSent = false;
-				}, 2000);
-			}
 			
 //			
 

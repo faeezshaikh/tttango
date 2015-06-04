@@ -170,8 +170,8 @@
 
 				<div class="wrapper col-md-12 ">
 					<div class="photos">
-					<!-- <div ng-repeat="pic_url in more_pics_url track by $index" class="panel panel-default col-md-3" ng-mouseover="hoverIn()" ng-mouseleave="hoverOut()"> -->
-					<div ng-repeat="pic_url in more_pics_url track by $index" class="col-md-3">
+						<!-- <div ng-repeat="pic_url in more_pics_url track by $index" class="panel panel-default col-md-3" ng-mouseover="hoverIn()" ng-mouseleave="hoverOut()"> -->
+						<div ng-repeat="pic_url in more_pics_url track by $index" class="col-md-3">
 
 
 							<span ng-show="hoverEdit" class="animate-show" style="max-width: 100%; max-height: 100%;"> <a> <img err-SRC="http://centralnormal.spdev.co.nz/images/custom/Staff/NoPerson.png"
@@ -180,7 +180,7 @@
 							</span> <img ng-src={{pic_url}} ng-show="!hoverEdit" err-SRC="http://centralnormal.spdev.co.nz/images/custom/Staff/NoPerson.png" style="width: 200px; height: 200px;" alt="gallery thumbnail" />
 
 
-					</div>
+						</div>
 					</div>
 				</div>
 
@@ -290,28 +290,32 @@
 
 	<!-- Send quick msg box start -->
 	<div ng-show="!personSameAsLoggedInUser" class=" panel panel-default row col-lg-12">
+		<form ng-controller="EmailController" name='submitForm'>
+			<div class="form-group">
+				<div class="text-center">
+					<label>Send {{person.name}} a quick message:</label>
+				</div>
+				<textarea id="messageArea" ng-model="emailContent" class="form-control" rows="4" required></textarea>
+				<p></p>
+				<div class="text-center">
+					<a href="#HomePage">
+						<button type="submit" class="btn btn-success" ng-click="sendMessage(person.id)" ng-disabled="submitForm.$pristine || submitForm.$invalid">Send Message</button>
+					</a>
+				</div>
 
-		<div class="form-group">
-			<div class="text-center">
-				<label>Send {{person.name}} a quick message:</label>
 			</div>
-			<textarea id="messageArea" ng-model="emailContent" class="form-control" rows="4"></textarea>
-			<p></p>
-			<div class="text-center" ng-controller="EmailController">
-				<a href="#HomePage">
-					<button type="submit" class="btn btn-success" ng-click="sendMessage(person.id)">Send Message</button>
-				</a>
-			</div>
+		</form>
 
-		</div>
+		<div ng-show="showMessageSent">Email successfully sent.</div>
 	</div>
-<!-- Send quick msg box end -->
+	<!-- Send quick msg box end -->
 
-	<div  ng-show="!personSameAsLoggedInUser" class="text-center">
+
+
+	<div ng-show="!personSameAsLoggedInUser" class="text-center">
 		<a href="#PersonDetails">
 			<button type="submit" class="btn btn-warning" ng-click="addContact(person.id)">Add to Contacts</button>
-		</a> 
-		<a href="#PersonDetails">
+		</a> <a href="#PersonDetails">
 			<button type="submit" class="btn btn-danger" ng-click="flagUser(person.id)">Flag as inappropriate</button>
 		</a>
 
@@ -355,7 +359,7 @@
 			</form>
 
 		</div>
-		
+
 		<div ng-show="reportSuccess" class="text-center">
 			<strong>Thank you for reporting the profile. Our moderators will review your report and take appropriate action.</strong>
 		</div>
@@ -367,7 +371,7 @@
 	</div>
 
 
-	
+
 
 
 

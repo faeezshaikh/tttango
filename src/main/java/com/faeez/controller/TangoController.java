@@ -52,7 +52,6 @@ public class TangoController {
 	@Autowired
 	private AwsService awsService;
 	
-	private String BASE_URL = "http://ec2-52-25-250-226.us-west-2.compute.amazonaws.com:8080/tttango/";
 
 	///////// [ Login, SignUp, Forgot from  here ] /////////////
 	@RequestMapping(value = "/signUpNewUser", method = RequestMethod.GET)
@@ -75,11 +74,9 @@ public class TangoController {
 	@RequestMapping(value = "/confirm", method = RequestMethod.GET)
 	public String confirm(@RequestParam(value = "username", required = true) String username)  {
 		try {
-//			String homePage = "http://localhost:8080/tttango/static/index.html";
-			
-			String homePage = BASE_URL + "static/index.html";
+			String homePage = "www.muslimbuds.com";
 			if(memberService.confirm(username)) {
-				return "Congratulations! You have successfully completed the registration process. Start cruising by signing in on the <a href=\""+ homePage +"\"> home page</a>";
+				return "Congratulations! You have successfully completed the registration process. Start cruising by signing in on the <a href=\""+ homePage +"\">www.muslimbuds.com</a>";
 			}
 		} catch (Exception e) {
 			return "Ooops! Something went wrong. You are not confirmed as of this time";

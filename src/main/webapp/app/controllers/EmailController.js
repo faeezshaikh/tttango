@@ -50,7 +50,6 @@ spaApp.controller('EmailController', function($scope, $http, ngTableParams, $fil
   // "email.html" calls this will null person id.
   // In both cases, sender is loggedInUser
   $scope.sendMessage = function(random_persons_id) {
-	
 	  var other_person_id;
 	  if(random_persons_id == null) {
 		  // that means it came from email page.. recepient is replying to the sender. // this CANNOT be localStorage.personId
@@ -86,6 +85,9 @@ spaApp.controller('EmailController', function($scope, $http, ngTableParams, $fil
             	console.log("Error sending email > " + data);
             });
 
+	
+		
+	
   }
 
  
