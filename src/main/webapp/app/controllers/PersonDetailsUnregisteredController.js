@@ -4,6 +4,7 @@
 		
 
 		$scope.personId = "";
+		$scope.lastLoginFormatted = "";
 		
 		   $scope.hoverIn = function(){
 			   console.log('in')
@@ -54,7 +55,8 @@
 			  $scope.likeCount = data.likes;
 //			  $scope.personImgUrl = BUCKET_URL + $scope.personId + "_1.jpg";
 			  $scope.personImgUrl = BUCKET_URL + $scope.person.main_img;
-			  
+			  $scope.lastLoginFormatted = getOnlineStatus(data.online_status,data.last_login);
+
 			  
 			  if(data.no_of_pics>1) {
 				  for(i=2;i<=data.no_of_pics;i++) {

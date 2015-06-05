@@ -1,3 +1,4 @@
+
 <div class="row text-center">
 	<div class="col-md-3 ">
 		<p></p>
@@ -11,59 +12,54 @@
 		<p></p>
 		<h2>World's First 100% Free Site for Single Muslims.</h2>
 		<p></p>
-		
+
 	</div>
 
-	<div class="col-md-4"  ng-controller="RegisterController">
+	<div class="col-md-4" ng-controller="RegisterController">
 
 		<div class="panel panel-default myBlackColor">
 			<div class="panel-body">
 				<label>100% Free Access!</label>
-				
-				<form role="form" name="registerForm" ng-submit="register(registerForm.$valid)" novalidate >
-					
+
+				<form role="form" name="registerForm" ng-submit="register(registerForm.$valid)" novalidate>
+
 					<div class="form-group" ng-class="{ 'has-error' : registerForm.registerUsername.$invalid  && submitted}">
-						<label for="registerUsername">Username</label> 
-						<input id="registerUsername" type="text" class="form-control" name="registerUsername" placeholder="Enter username" ng-model="registerUsername" ng-minlength="3" ng-maxlength="8" required>
-						 <p ng-show="registerForm.registerUsername.$invalid && !registerForm.registerUsername.$pristine" class="help-block">Username must be between 3 & 8 characters</p>
+						<label for="registerUsername">Username</label> <input id="registerUsername" type="text" class="form-control" name="registerUsername" placeholder="Enter username" ng-model="registerUsername"
+							ng-minlength="3" ng-maxlength="8" required>
+						<p ng-show="registerForm.registerUsername.$invalid && !registerForm.registerUsername.$pristine" class="help-block">Username must be between 3 & 8 characters</p>
 					</div>
-					
+
 					<div class="form-group" ng-class="{ 'has-error' : registerForm.registerEmail.$invalid  && submitted}">
-						<label for="registerEmail">Email</label>
-						 <input type="email" id="registerEmail" name="registerEmail" class="form-control"  placeholder="Enter username" ng-model="registerEmail" required>
-						 <p ng-show="registerForm.registerEmail.$invalid && !registerForm.registerEmail.$pristine" class="help-block">Email must be valid and active.</p>
+						<label for="registerEmail">Email</label> <input type="email" id="registerEmail" name="registerEmail" class="form-control" placeholder="Enter username" ng-model="registerEmail" required>
+						<p ng-show="registerForm.registerEmail.$invalid && !registerForm.registerEmail.$pristine" class="help-block">Email must be valid and active.</p>
 					</div>
-					
+
 					<div class="form-group" ng-class="{ 'has-error' : registerForm.registerPassword.$invalid && submitted}">
-						<label for="registerPassword">Password</label>
-						<input type="password" class="form-control" id="registerPassword" name="registerPassword" placeholder="Password" ng-model="registerPassword" ng-minlength="5" required>
+						<label for="registerPassword">Password</label> <input type="password" class="form-control" id="registerPassword" name="registerPassword" placeholder="Password" ng-model="registerPassword"
+							ng-minlength="5" required>
 						<p ng-show="registerForm.registerPassword.$invalid && !registerForm.registerPassword.$pristine" class="help-block">Password must be at least 5 characters.</p>
 					</div>
-					
+
 					<div class="form-group" ng-class="{ 'has-error' :  registerForm.optradio.$invalid  && submitted}">
 
-						<label>Your Gender</label>
-						<label class="radio-inline"> 
-							<input type="radio" name="optradio" value="1" ng-model="gender" required>Male
+						<label>Your Gender</label> <label class="radio-inline"> <input type="radio" name="optradio" value="1" ng-model="gender" required>Male
+						</label> <label class="radio-inline"> <input type="radio" name="optradio" value="2" ng-model="gender" required>Female
 						</label>
-						<label class="radio-inline"> 
-								<input type="radio" name="optradio" value="2" ng-model="gender" required>Female
-						</label> 
 						<p ng-show="gender == undefined && submitted" class="help-block">Select gender</p>
 					</div>
 
 					<div class="form-group" ng-class="{ 'has-error' : !checkboxValue && submitted}">
 						<div class="checkbox">
-							<label><input type="checkbox" name="registerCheck" ng-model="checkboxValue" required><small>I certify that I am 18 or over, that I have read and accepted the <a href="#"> Terms and Conditions</a> as well as the Privacy Policy of Muslim Partners.com 
+							<label><input type="checkbox" name="registerCheck" ng-model="checkboxValue" required><small>I certify that I am 18 or over, that I have read and accepted the <a href="#">
+										Terms and Conditions</a> as well as the Privacy Policy of Muslim Partners.com
 							</small></label>
 						</div>
 					</div>
 
-					<button type="submit" class="btn btn-success btn-lg" >Free Sign up</button>
+					<button type="submit" class="btn btn-success btn-lg">Register</button>
 					<p></p>
-					<span ng-hide="submitted" class="text-danger">{{registrationResponseFail}}</span>
-					<span ng-hide="submitted" class="text-success">{{registrationResponsePass}}</span>
-					<span ng-show="submitted && isFormValid" class="text-warning">Please wait..</span>
+					<span ng-hide="submitted" class="text-danger">{{registrationResponseFail}}</span> <span ng-hide="submitted" class="text-success">{{registrationResponsePass}}</span> <span
+						ng-show="submitted && isFormValid" class="text-warning">Please wait..</span>
 				</form>
 			</div>
 		</div>
@@ -95,7 +91,7 @@
 		And much more!
 		<p></p>
 		<h4>No Premium or A-list upgrades. Everyone is a premium member :-)</h4>
-		
+
 
 	</div>
 	<div class="col-md-3">
@@ -103,36 +99,34 @@
 		<div class="panel panel-default myBlackColor">
 			<div class="panel-body">
 				<label>Login in here.</label>
-				<form role="form" name="loginForm"  novalidate>
-					<div class="form-group" >
+				<form role="form" name="loginForm" novalidate>
+					<div class="form-group">
 						<input type="text" id="loginField" name="loginField" class="form-control" placeholder="Enter username" ng-model="loginUsername" required>
 					</div>
-					<div class="form-group" >
+					<div class="form-group">
 						<label>Password</label> <input type="password" id="passwordField" name="passwordField" class="form-control" placeholder="Password" ng-model="loginPassword" required>
 					</div>
 					<button type="submit" class="btn btn-success" ng-disabled="loginForm.$invalid" ng-click="login()">Login</button>
 					<button type="submit" class="btn btn-default" ng-click="requestForgot()">Forgot login</button>
-					
+
 					<p></p>
 					<span class="text-danger">{{ loginMessage }}</span>
 				</form>
 			</div>
 		</div>
 
-<!--  -->
+		<!--  -->
 
 		<div id="forgotPanel" ng-show="forgotClicked() " class="panel panel-default">
 			<div class="panel-body">
 				<label>Enter Email Address</label>
-				<form role="form" name="forgotForm"  novalidate>
-					<div class="form-group" >
+				<form role="form" name="forgotForm" novalidate>
+					<div class="form-group">
 						<input id="forgotEmail" type="email" name="forgotEmail" class="form-control" placeholder="Enter email" ng-model="forgotEmail" required>
 					</div>
 					<button type="submit" class="btn btn-default" ng-disabled="forgotForm.$invalid" ng-click="forgotLoginSubmitted()">Submit</button>
 					<p></p>
-					<span class="text-success">{{ forgotMessagePass }}</span>
-					<span class="text-danger">{{ forgotMessageFail }}</span>
-					<span ng-show="forgotMessageInProgress"> Processing... </span>
+					<span class="text-success">{{ forgotMessagePass }}</span> <span class="text-danger">{{ forgotMessageFail }}</span> <span ng-show="forgotMessageInProgress"> Processing... </span>
 				</form>
 			</div>
 		</div>
@@ -158,10 +152,9 @@
 					<a href="#PersonDetailsUnregistered" ng-click="randomPersonSelected(random_pic)">
 						<div class="panel-body text-center ">
 							<div>
-								<img style="width: 150px; height: 150px;" ng-src={{random_pic}}
-								err-SRC="http://centralnormal.spdev.co.nz/images/custom/Staff/NoPerson.png" />
+								<img style="width: 150px; height: 150px;" ng-src={{random_pic}} err-SRC="http://centralnormal.spdev.co.nz/images/custom/Staff/NoPerson.png" />
 							</div>
-							{{visitor_city}}
+							<!-- {{visitor_city}} -->
 						</div>
 					</a>
 				</div>
@@ -179,4 +172,167 @@
 </div>
 <!--Meet someone new Panel End-->
 
+
+<!-- Marketing messaging and featurettes
+    ================================================== -->
+<!-- Wrap the rest of the page in another container to center all the content. -->
+
+<div class="container marketing">
+
+	<!-- Three columns of text below the carousel -->
+	<div class="row">
+		<div class="col-lg-4">
+			<img class="text-center" style="width: 200px; height: 200px;" src="https://s3-us-west-2.amazonaws.com/mbuds/gohalal.gif">
+
+			<h2>Heading</h2>
+			<p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.
+				Praesent commodo cursus magna, vel scelerisque nisl consectetur et.</p>
+			<p>
+				<a class="btn" href="#">View details &raquo;</a>
+			</p>
+		</div>
+		<!-- /.span4 -->
+		<div class="col-lg-4">
+			<img class="text-center" style="width: 200px; height: 200px;" src="https://s3-us-west-2.amazonaws.com/mbuds/quality.gif">
+			<h2>Heading</h2>
+			<p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cras mattis consectetur purus sit amet fermentum. Fusce dapibus, tellus ac cursus commodo,
+				tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
+			<p>
+				<a class="btn" href="#">View details &raquo;</a>
+			</p>
+		</div>
+		<!-- /.span4 -->
+		<div class="col-lg-4">
+			<img class="text-center" style="width: 200px; height: 200px;" src="https://s3-us-west-2.amazonaws.com/mbuds/Free.png">
+			<h2>Heading</h2>
+			<p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris
+				condimentum nibh, ut fermentum massa justo sit amet risus.</p>
+			<p>
+				<a class="btn" href="#">View details &raquo;</a>
+			</p>
+		</div>
+		<!-- /.span4 -->
+	</div>
+	<!-- /.row -->
+
+
+	<!-- START THE FEATURETTES -->
+
+	<hr class="featurette-divider">
+
+	<div class="featurette">
+		<img class="featurette-image pull-right" src="http://getbootstrap.com/2.3.2/assets/img/examples/browser-icon-chrome.png">
+		<h2 class="featurette-heading">
+			First featurette headling. <span class="muted">It'll blow your mind.</span>
+		</h2>
+		<p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce
+			dapibus, tellus ac cursus commodo.</p>
+	</div>
+
+	<hr class="featurette-divider">
+
+	<div class="featurette">
+		<img class="featurette-image pull-left" src="http://getbootstrap.com/2.3.2/assets/img/examples/browser-icon-firefox.png">
+		<h2 class="featurette-heading">
+			Oh yeah, it's that good. <span class="muted">See for yourself.</span>
+		</h2>
+		<p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce
+			dapibus, tellus ac cursus commodo.</p>
+	</div>
+
+	<hr class="featurette-divider">
+
+	<div class="featurette">
+		<img class="featurette-image pull-right" src="http://getbootstrap.com/2.3.2/assets/img/examples/browser-icon-safari.png">
+		<h2 class="featurette-heading">
+			And lastly, this one. <span class="muted">Checkmate.</span>
+		</h2>
+		<p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce
+			dapibus, tellus ac cursus commodo.</p>
+	</div>
+
+	<hr class="featurette-divider">
+
+	<!-- /END THE FEATURETTES -->
+
+	<table class="table table-hover text-center">
+			
+		<tbody>
+			<tr>
+				<td><strong>Features</strong></td>
+				<td><strong>MuslimBuds</strong></td>
+				<td><strong>HOD</strong></td>
+				<td><strong>SingleMuslim</strong></td>
+				<td><strong>Nikah.com</strong></td>
+			</tr>
+			<tr>
+
+				<td>Send Message</td>
+				<td><span class="glyphicon glyphicon-ok"></span></td>
+				<td><span class="glyphicon glyphicon-remove"></span></td>
+				<td><span class="glyphicon glyphicon-remove"></span></td>
+				<td><span class="glyphicon glyphicon-remove"></span></td>
+
+			</tr>
+			<tr>
+
+				<td>Like Profile</td>
+				<td><span class="glyphicon glyphicon-ok"></span></td>
+				<td><span class="glyphicon glyphicon-remove"></span></td>
+				<td><span class="glyphicon glyphicon-remove"></span></td>
+				<td><span class="glyphicon glyphicon-remove"></span></td>
+
+			</tr>
+			<tr>
+
+				<td>See who viewed you</td>
+				<td><span class="glyphicon glyphicon-ok"></span></td>
+				<td><span class="glyphicon glyphicon-remove"></span></td>
+				<td><span class="glyphicon glyphicon-remove"></span></td>
+				<td><span class="glyphicon glyphicon-remove"></span></td>
+
+			</tr>
+			<tr>
+
+				<td>See who read your msg</td>
+				<td><span class="glyphicon glyphicon-ok"></span></td>
+				<td><span class="glyphicon glyphicon-remove"></span></td>
+				<td><span class="glyphicon glyphicon-remove"></span></td>
+				<td><span class="glyphicon glyphicon-remove"></span></td>
+
+			</tr>
+			<tr>
+
+				<td>See who liked your profile</td>
+				<td><span class="glyphicon glyphicon-ok"></span></td>
+				<td><span class="glyphicon glyphicon-remove"></span></td>
+				<td><span class="glyphicon glyphicon-remove"></span></td>
+				<td><span class="glyphicon glyphicon-remove"></span></td>
+
+			</tr>
+			<tr>
+
+				<td>Price</td>
+				<td><strong style="color: #030; background-color: #8E8; padding: 2px 5px; border-radius: 15px; -moz-border-radius: 15px; -webkit-border-radius: 15px;">Free</strong></td>
+				<td><strong>$55</strong></td>
+				<td><strong>$39</strong></td>
+				<td><strong>$$9</strong></td>
+
+			</tr>
+		</tbody>
+	</table>
+	<hr class="featurette-divider">
+
+	<!-- FOOTER -->
+	<footer>
+		<p class="pull-right">
+			<a href="#">Back to top</a>
+		</p>
+		<p>
+			&copy; 2013 Company, Inc. &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a>
+		</p>
+	</footer>
+
+</div>
+<!-- /.container -->
 

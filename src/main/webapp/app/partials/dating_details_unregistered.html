@@ -107,7 +107,7 @@
 					</b>
 				</h1>
 			</div>
-				<div class="panel-body">
+			<div class="panel-body">
 				<p>
 					<strong>Height: </strong>{{person.height}}
 				</p>
@@ -139,7 +139,7 @@
 					<strong>Relocation: </strong>{{person.relocate}}
 				</p>
 				<p>
-					<strong>Last login: </strong>{{person.last_login}}
+					<strong>Last login: </strong>{{lastLoginFormatted}}
 				</p>
 			</div>
 		</div>
@@ -154,39 +154,49 @@
 
 
 
+	
 	<!-- More Pics  Panel Begin-->
 	<div class="col-lg-12">
 		<div class="panel panel-default">
-			<div class="panel-heading text-center"><strong>Some more pics!</strong></div>
+			<div class="panel-heading text-center">
+				<strong>More pics!</strong>
+			</div>
 			<!-- /.panel-heading -->
+
 			<div class="panel-body">
 				<!-- Nav tabs -->
 
-				<div class="col-md-12 ">
+				<div class="wrapper col-md-12 ">
+					<div class="photos">
+						<!-- <div ng-repeat="pic_url in more_pics_url track by $index" class="panel panel-default col-md-3" ng-mouseover="hoverIn()" ng-mouseleave="hoverOut()"> -->
+						<div ng-repeat="pic_url in more_pics_url track by $index" class="col-md-3">
 
 
-					<div ng-repeat="pic_url in more_pics_url track by $index" class="panel panel-default col-md-3" ng-mouseover="hoverIn()" ng-mouseleave="hoverOut()">
-
-						<div class="innerbox text-center">
-
-
-
-							<sup> <span ng-show="hoverEdit" class="animate-show"> <a> <img ng-src={{pic_url}} err-SRC="http://centralnormal.spdev.co.nz/images/custom/Staff/NoPerson.png">
-								</a>
-							</span>
-							</sup> <img ng-src={{pic_url}} err-SRC="http://centralnormal.spdev.co.nz/images/custom/Staff/NoPerson.png" ng-show="!hoverEdit" style="width: 200px; height: 200px;" alt="gallery thumbnail" />
-
-
-
+							<span ng-show="hoverEdit" class="animate-show" style="max-width: 100%; max-height: 100%;"> <a> <img err-SRC="http://centralnormal.spdev.co.nz/images/custom/Staff/NoPerson.png"
+									ng-src={{pic_url}} style="max-width: 100%; max-height: 100%;">
+							</a>
+							</span> <img ng-src={{pic_url}} ng-show="!hoverEdit" err-SRC="http://centralnormal.spdev.co.nz/images/custom/Staff/NoPerson.png" style="width: 200px; height: 200px;" alt="gallery thumbnail" />
 
 
 						</div>
-
 					</div>
 				</div>
 
 
+				<!-- <div class="col-md-12 ">
+
+					<div ng-repeat="pic_url in more_pics_url track by $index" class="panel panel-default col-md-3">
+						<div class="innerbox text-center">
+							<a class="test-popup-link" href={{pic_url}} ng-click="modal()"> <img err-SRC="http://centralnormal.spdev.co.nz/images/custom/Staff/NoPerson.png" ng-src={{pic_url}}
+								style="max-width: 100%; max-height: 100%;">
+							</a>
+						</div>
+					</div>
+				</div> -->
+
+
 			</div>
+
 			<!-- /.panel-body -->
 
 
@@ -195,7 +205,6 @@
 		<!-- /.panel -->
 	</div>
 	<!-- More Pics  Panel End-->
-
 
 
 	<!--More About Panel Begin-->
@@ -230,8 +239,8 @@
 		<!-- /.panel -->
 	</div>
 	<!--Looking for Panel End -->
-	
-	
+
+
 	<!-- Send quick msg box start -->
 	<div class=" panel panel-default row col-lg-12">
 
