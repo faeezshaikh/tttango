@@ -2,9 +2,9 @@ var AUTH0_CLIENT_ID='aARSVavYoIDelNBdscqwEkUQQsAzhd5R';
 var AUTH0_DOMAIN='faeez.auth0.com'; 
 var AUTH0_CALLBACK_URL=location.href;
 
-// Instance 1 = 52.26.66.11
-//var REST_BASE = 'http://52.26.66.11:8080/tttango/'
-	var REST_BASE = 'http://localhost:8080/tttango/'
+// Instance 1 = 52.26.116.236
+var REST_BASE = 'http://52.26.116.236:8080/tttango/'
+//	var REST_BASE = 'http://localhost:8080/tttango/'
 	
 var BUCKET_URL = 'https://s3-us-west-2.amazonaws.com/mbuds/'
 

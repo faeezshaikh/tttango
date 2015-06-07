@@ -92,8 +92,8 @@
 				</a></li>
 				<li><a href="#PersonDetails" ng-show="isloggedin()"  ng-click="myProfileClicked(auth.profile.identities[0].user_id)">Hi {{auth.profile.username}}</a></li>
 				<li><a href="#PersonDetails" ng-show="isloggedin()" ng-click="myProfileClicked(auth.profile.identities[0].user_id)">My Profile</a></li>
-				<li><a href="#SearchProfilesPage">Search</a></li>
-				<li><a href="#ContactsPage">Contacts</a></li>
+				<li><a href="#SearchProfilesPage" ng-show="isloggedin()">Search</a></li>
+				<li><a href="#ContactsPage"  ng-show="isloggedin()" >Contacts</a></li>
 				<li><a href="#MeetPage">Meet or Not</a></li>
 				<li><a href="#login" ng-show="isloggedin()" ng-click="logout()">Logout</button></a></li>
 			</ul>

@@ -1,9 +1,12 @@
 package com.faeez.controller;
 
 import com.sun.mail.smtp.SMTPTransport;
+
 import java.security.Security;
 import java.util.Date;
 import java.util.Properties;
+
+import javax.mail.Address;
 import javax.mail.Message;
 import javax.mail.MessagingException;
 import javax.mail.Session;

@@ -6,9 +6,19 @@
 body {
 	/* background|-color: #f8f8f8; */
 	 background-color: #e9eaed; 
-	 	 color: #432BB2 
+	 	 /* color: #432BB2 */ 
+	 	 color: #141823
 }
 
+.customTextColor {
+	color: #780047
+}
+.customRedColor {
+	color: red
+}
+.customGreenColor {
+	color: green
+}
 #wrapper {
 	width: 100%;
 }

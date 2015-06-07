@@ -76,7 +76,8 @@ public class TangoController {
 		try {
 			String homePage = "www.muslimbuds.com";
 			if(memberService.confirm(username)) {
-				return "Congratulations! You have successfully completed the registration process. Start cruising by signing in on the <a href=\""+ homePage +"\">www.muslimbuds.com</a>";
+//				return "Congratulations! You have successfully completed the registration process. Start cruising by signing in on the <a href=\""+ homePage +"\">www.muslimbuds.com</a>";
+				return "Congratulations! You have successfully completed the registration process. Start cruising by signing in on the <a href=\"http://www.muslimbuds.com\">www.muslimbuds.com</a>";
 			}
 		} catch (Exception e) {
 			return "Ooops! Something went wrong. You are not confirmed as of this time";

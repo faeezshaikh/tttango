@@ -54,6 +54,14 @@ spaApp.controller('MeetController', function($scope, $http, $location,$route,use
     $location.path('/MeetPage');
     $route.reload();
   }
+  
+  $scope.isLoggedIn = function() {
+	  if($scope.auth.profile) {
+		  return true;
+	  } else {
+		  return false;
+	  }
+  }
 
 
 });

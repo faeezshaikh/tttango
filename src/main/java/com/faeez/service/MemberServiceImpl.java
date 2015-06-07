@@ -32,8 +32,11 @@ public class MemberServiceImpl implements MemberService {
 	private MeetMeDao meetMeDao;
 	private LikeMeDao likeMeDao;
 	
-	// Instance 1 = 52.26.66.11
-	private String BASE_URL = "http://52.26.66.11:8080/tttango/";
+	// Instance 1 = 52.26.116.236
+	private String BASE_URL = "http://52.26.116.236:8080/tttango/";
+	
+	private String emailAddress = "mymuslimbuds";
+	private String emailPass = "Posidon745";
 	
 //	@Autowired
 //	private PicsService picService;
@@ -322,10 +325,10 @@ public class MemberServiceImpl implements MemberService {
 			resp.setReason(message);
 			resp.setStatus(true);
 			
-			String link = "http://localhost:8080/tttango/confirm?username=" + username;
-//			String link = BASE_URL + "confirm?username=" + username;
-			String results = "Thank you for registering. \nYour username: <b>" + username +"</b> and passord: <b>" + password + "</b>. <p></p> Please <a href=\" "+ link+ "\" >click here <a> to confirm your login.";
-			GoogleMail.Send("sarahfaeez", "Password123", email, "Welcome to Two to Tango", results);
+//			String link = "http://localhost:8080/tttango/confirm?username=" + username;
+			String link = BASE_URL + "confirm?username=" + username;
+			String results = "Thank you for registering. \nYour username: <b>" + username +"</b> and password: <b>" + password + "</b>. <p></p> Please <a href=\" "+ link+ "\" >click here <a> to confirm your login.";
+			GoogleMail.Send(emailAddress, emailPass, email, "Welcome to MuslimBuds.com", results);
 			
 			return resp;
 		}
@@ -347,8 +350,8 @@ public class MemberServiceImpl implements MemberService {
 			String password = member.getPassword();
 			String link = "www.muslimbuds.com";
 			
-			String message = "You requested login information for your account at <a href=\" "+ link+ "\" >www.muslimbuds.com<a>. Your username is : <b>" + username + "</b> and password is: <b>" + password + "</b>";
-			GoogleMail.Send("sarahfaeez", "Password123", email, "Two to Tango: Your login information", message);
+			String message = "You requested login information for your account at <a href=\""+ link+ "\" >www.muslimbuds.com</a>. Your username is : <b>" + username + "</b> and password is: <b>" + password + "</b>";
+			GoogleMail.Send(emailAddress, emailPass, email, "MuslimBuds.com: Your login information", message);
 			
 			return true;
 		} else {

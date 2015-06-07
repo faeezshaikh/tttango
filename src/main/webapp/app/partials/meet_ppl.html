@@ -1,10 +1,10 @@
 <div class="row">
 	<!--Side ad panel begin-->
 	<div class="col-lg-2">
-		<img id="image-4" src="http://placekitten.com.s3.amazonaws.com/homepage-samples/200/286.jpg" alt="">
+		<img id="image-4" src="http://p-hold.com/120/240" alt="">
 		<p></p>
 		<p></p>
-		<img id="image-4" src="http://placekitten.com.s3.amazonaws.com/homepage-samples/200/286.jpg" alt="">
+		<img id="image-4" src="http://p-hold.com/120/240" alt="">
 	</div>
 	<!--Side ad panel end-->
 
@@ -17,18 +17,19 @@
 				<img ng-src={{randomPersonsPicUrl}} err-SRC="http://centralnormal.spdev.co.nz/images/custom/Staff/NoPerson.png" style="width: 400px; height: 350px;" />
 			</div>
 			<div class="panel-footer">
-				<button ng-click="yesClicked()" class="">Yes</button>
-				<button ng-click="noClicked()" class="">No</button>
+				<button ng-click="yesClicked()" ng-disabled="!isLoggedIn()" class="btn btn-success">Yes</button>
+				<button ng-click="noClicked()" class="btn btn-warning">No</button>
+				<div ng-show="!isLoggedIn()" class="alert alert-danger" role="alert">You need to <a href="#/LoginPage">signup </a>in order to be able to make a 'Yes' choice</div>
 			</div>
 		</div>
 	</div>
 
 	<!--Side ad panel begin-->
 	<div class="col-lg-2">
-		<img id="image-4" src="http://placekitten.com.s3.amazonaws.com/homepage-samples/200/286.jpg" alt="">
+		<img id="image-4" src="http://p-hold.com/120/240" alt="">
 		<p></p>
 		<p></p>
-		<img id="image-4" src="http://placekitten.com.s3.amazonaws.com/homepage-samples/200/286.jpg" alt="">
+		<img id="image-4" src="http://p-hold.com/120/240" alt="">
 	</div>
 	<!--Side ad panel end-->
 </div>

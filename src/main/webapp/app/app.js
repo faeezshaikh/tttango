@@ -50,8 +50,7 @@ function myAppConfig($routeProvider, authProvider, $httpProvider, $locationProvi
 		requiresLogin : true
 	}).when('/MeetPage', {
 		templateUrl : 'app/partials/meet_ppl.html',
-		controller : 'MeetController',
-		requiresLogin : true
+		controller : 'MeetController'
 	}).when('/ReadMePage', {
 		templateUrl : 'app/partials/read_me.html',
 		controller : 'LikedMeController',
