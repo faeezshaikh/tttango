@@ -2,7 +2,16 @@
 <div class="row text-center" ng-show="isUserConfirmed()">
 	<div class="col-md-12">
 
-		<img src="http://placehold.it/728x90">
+		<!-- <img src="http://placehold.it/728x90"> -->
+
+		<!-- <a href="http://www.amazon.com/gp/product/B004LLIKVU/ref=as_li_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=B004LLIKVU&linkCode=as2&tag=continuouslea-20&linkId=46FR5IZWOCJRSFGS"><img
+			border="0" src="http://ws-na.amazon-adsystem.com/widgets/q?_encoding=UTF8&ASIN=B004LLIKVU&Format=_SL110_&ID=AsinImage&MarketPlace=US&ServiceVersion=20070822&WS=1&tag=continuouslea-20"></a><img
+			src="http://ir-na.amazon-adsystem.com/e/ir?t=continuouslea-20&l=as2&o=1&a=B004LLIKVU" width="1" height="1" border="0" alt="" style="border: none !important; margin: 0px !important;" />
+
+ -->
+		<iframe src="http://yllix.com/banner_show.php?section=General&amp;pub=851166&amp;format=728x90&amp;ga=g" frameborder="0" scrolling="no" width="728" height="90" marginwidth="0" marginheight="0"></iframe>
+
+
 	</div>
 </div>
 <p></p>
@@ -94,7 +103,9 @@
 				</div>
 
 				<div class="panel-footer">
-					<span class="pull-left">View Details</span><!-- <sup><span class="badge">New</span></sup> --> <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+					<span class="pull-left">View Details</span>
+					<!-- <sup><span class="badge">New</span></sup> -->
+					<span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
 					<div class="clearfix"></div>
 				</div>
 			</div>
@@ -118,7 +129,9 @@
 				</div>
 
 				<div class="panel-footer">
-					<span class="pull-left">View Details</span> <!-- <sup><span class="badge">New</span></sup> --> <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+					<span class="pull-left">View Details</span>
+					<!-- <sup><span class="badge">New</span></sup> -->
+					<span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
 					<div class="clearfix"></div>
 				</div>
 			</div>
@@ -148,13 +161,12 @@
 			</div>
 		</a>
 	</div>
-	<!--Side ad panel begin-->
 	<div class="col-lg-3">
-		<img src="http://placehold.it/350x150">
+		<!-- 		<img src="http://placehold.it/350x150"> -->
+		
 		<p></p>
 
 	</div>
-	<!--Side ad panel end-->
 
 
 	<div class="col-lg-3 col-md-6">
@@ -206,13 +218,12 @@
 	</div>
 
 
-	<!--Side ad panel begin-->
 	<div class="col-lg-3">
-		<img src="http://placehold.it/350x150">
+		<!-- <img src="http://placehold.it/350x150"> -->
+
 		<p></p>
 
 	</div>
-	<!--Side ad panel end-->
 
 
 
@@ -222,8 +233,7 @@
 <!--Ad panel - Horizontal start-->
 <div class="row text-center" ng-show="isUserConfirmed()">
 	<div class="col-md-12">
-
-		<img src="http://placehold.it/728x90">
+		<iframe src="//go.padstm.com/?id=311883&t=iframe&var=53117" style="width:728px;height:90px;border:0;overflow:hidden;"></iframe>
 	</div>
 </div>
 <p></p>
@@ -232,10 +242,9 @@
 <div ng-show="isUserConfirmed()" class="row">
 	<!--Side ad panel begin-->
 	<div class="col-lg-2">
-		<img id="image-4" src="http://placekitten.com.s3.amazonaws.com/homepage-samples/200/286.jpg" alt="">
+		<!-- <img id="image-4" src="http://placekitten.com.s3.amazonaws.com/homepage-samples/200/286.jpg" alt=""> -->
+		<iframe src="//go.padstm.com/?id=311881&t=iframe" style="width:120px;height:600px;border:0;overflow:hidden;"></iframe>
 		<p></p>
-		<p></p>
-		<img id="image-4" src="http://placekitten.com.s3.amazonaws.com/homepage-samples/200/286.jpg" alt="">
 	</div>
 	<!--Side ad panel end-->
 
@@ -245,29 +254,28 @@
 		<div class="panel panel-default">
 			<div ng-hide="isLoading" class="panel-heading text-center">Your message inbox</div>
 			<div ng-show="isLoading" class="panel-heading text-center">
-			Loding inbox..
-			<p></p>
-			<img ng-src="https://s3-us-west-2.amazonaws.com/tttango/spinner.gif">
+				Loding inbox..
+				<p></p>
+				<img ng-src="https://s3-us-west-2.amazonaws.com/tttango/spinner.gif">
 			</div>
 			<div class="panel-body">
 
 				<table ng-table="tableParams" class="table table-hover text-center">
 					<tr ng-repeat="email in $data">
-						
+
 						<td data-title="'Picture'" sortable="" ng-class="{'unread': isConversationNew(email)}"><a href="#EmailPage" ng-click="openEmailFromInbox(email)"><img
 								style="width: 150px; height: 150px;" ng-src={{getImgUrl(email.sender_main_img)}} err-SRC="http://centralnormal.spdev.co.nz/images/custom/Staff/NoPerson.png" /></a></td>
 
-						<td data-title="'Message'" sortable="'message'" ng-class="{'unread': isConversationNew(email)}"><a href="#EmailPage" ng-click="openEmailFromInbox(email)"> {{email.message |
-								limitTo: 20}} {{email.message.length < 25 ? '' : '...'}} </a></td>
-						
-						
+						<td data-title="'Message'" sortable="'message'" ng-class="{'unread': isConversationNew(email)}"><a href="#EmailPage" ng-click="openEmailFromInbox(email)"> {{email.message | limitTo:
+								20}} {{email.message.length < 25 ? '' : '...'}} </a></td>
+
+
 						<td data-title="'Time'" sortable="'email_time_millis'" ng-class="{'unread': isConversationNew(email)}"><a href="#EmailPage" ng-click="openEmailFromInbox(email)">
-								{{processDate(email.new_conversation_time)}}
-								</a></td>
+								{{processDate(email.new_conversation_time)}} </a></td>
 
 					</tr>
 				</table>
-				
+
 				<div class="text-center" ng-hide="areResultsPresent()">
 					<mark>No messages so far.</mark>
 				</div>
@@ -286,10 +294,8 @@
 
 	<!--Side ad panel begin-->
 	<div class="col-lg-2">
-		<img id="image-4" src="http://placekitten.com.s3.amazonaws.com/homepage-samples/200/286.jpg" alt="">
-		<p></p>
-		<p></p>
-		<img id="image-4" src="http://placekitten.com.s3.amazonaws.com/homepage-samples/200/286.jpg" alt="">
+		<!-- <img id="image-4" src="http://placekitten.com.s3.amazonaws.com/homepage-samples/200/286.jpg" alt=""> -->
+		<iframe src="//go.padstm.com/?id=311881&t=iframe" style="width:120px;height:600px;border:0;overflow:hidden;"></iframe>
 	</div>
 	<!--Side ad panel end-->
 

@@ -85,7 +85,7 @@
 
 		getLocation = function() {
 
-			jQuery.ajax({
+			/*jQuery.ajax({
 				url : '//freegeoip.net/json/',
 				type : 'POST',
 				dataType : 'jsonp',
@@ -94,7 +94,7 @@
 					// alert($scope.visitor_city );
 					userService.setVisitorLocation($scope.visitor_city);
 				}
-			});
+			});*/
 		}
 
 		$scope.init = function() {
