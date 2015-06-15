@@ -69,14 +69,20 @@ public class MemberServiceImpl implements MemberService {
 	@Override
 	@Transactional
 	public void updateMember(UiMember uim) {
+		if(uim == null) return;
 		
-		Member m = new Member();
+		Member m = memberDao.getMemberById(uim.getId());
+		String main_img = m.getMain_img();
+		if(m == null) return;
 		BeanUtils.copyProperties(uim,m);
 		java.util.Date utilDate = extractBirthDate(uim);
 		String language = extractLanguage(uim);
 		
 		m.setBirth(utilDate);
 		m.setLanguage(language);
+		
+		// Once img is uploaded, localStorage.loggedInUser is not beng updated, to set the main img, so in subsequent updates, that value comes in as null
+		m.setMain_img(main_img);
 		
 		memberDao.updateMember(m);
 	}
